@@ -1,0 +1,54 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 10rpx;
+    /* justify-content: center; */
+    line-height: normal;
+    margin: 0;
+    position: static;
+}
+.list{
+    width: 344rpx;
+    margin:0 0 10rpx 20rpx;
+    height: 300rpx;
+    text-align: center;
+    color:#fff;
+}
+
+.list view{
+  text-align: center;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 50px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 220rpx;
+  line-height: 220rpx;
+}
+.step{
+  width: 708rpx;
+  margin:0 0 10rpx 20rpx;
+  text-align: center;
+  color:#fff;
+  height: 220rpx;
+  line-height: 220rpx;
+  background-color: #6aaeed;
+  display: flex;
+  flex-direction: row;
+}
+.step_text{
+   flex: 2;
+}
+.step_num{
+   flex: 3;
+   color: red;
+}
+.step_num text{
+   font-size: 56rpx;
+   font-weight: bold;
+  padding: 50rpx 80rpx;
+  background-color: #fff;
+}

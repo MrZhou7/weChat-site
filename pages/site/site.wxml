@@ -1,0 +1,13 @@
+<view class="content">
+  <view wx:for="{{list}}" style="background:{{itemColor}}" wx:key="{{index}}" class='list' bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
+    <view class="iconfont {{item.icon}}"></view>
+    <view>{{item.text}}</view>
+  </view>
+  <view class='step'>
+    <view class='step_text'>我的步数</view>
+    <view class='step_num'>
+      <text>{{stepNum}}</text>
+    </view>
+  </view>
+</view>
+ 

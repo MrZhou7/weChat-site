@@ -1,0 +1,49 @@
+/**index.wxss**/
+page{
+  background: #f8f8f8;
+}
+.box{
+  display: flex;
+  height: 210rpx;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #6aaeed;
+  color:#fff;
+  margin: 20rpx 22rpx;
+  border-radius: 20rpx;
+}
+.box_one{
+  flex: 1.5;
+  text-align: center;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 50px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 210rpx;
+  line-height: 210rpx;
+}
+
+.box_two{
+  flex: 3;
+  width: 213rpx;
+}
+.wrap_one{
+  line-height: 75rpx;
+  text-align: left;
+  font-size: 32rpx;
+}
+.wrap_two{
+  flex: 2;
+  font-size: 24rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.box_three{
+  flex: 1;
+  text-align: center;
+}
