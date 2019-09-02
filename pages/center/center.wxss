@@ -1,0 +1,7 @@
+/* pages/center/center.wxss */
+.weui-btn-area{
+  padding-bottom: 30px;
+}
+.weui-select{
+  overflow: hidden
+}

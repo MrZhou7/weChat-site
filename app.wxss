@@ -1,5 +1,7 @@
 /**app.wxss**/
 @import '/static/icon.wxss';
+@import '/static/weui.wxss';
+
 page{
   background: #f8f8f8;
 }

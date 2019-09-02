@@ -1,13 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="box" wx:for="{{list}}" style="background:{{item.color}}" wx:key="{{index}}" bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
-    <view class="box_one iconfont {{item.icon}}"></view>
-    <view class="box_two">
-      <view class="wrap_one">{{item.text}}</view>
-      <view class="wrap_two">{{item.content}}</view>
-    </view>
-    <view class="box_all box_three">
-      <i-icon type="enter" size="28" color="#80848f" />
+  <view class="box" wx:for="{{list}}" wx:key="{{index}}" bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
+    <view class="wrap">
+      <image src="{{item.bg}}"></image>
     </view>
   </view>
+</view>
+<view bindtap="getCenter" data-id="{{center.id}}" data-text="{{center.text}}" class="wrapBottom">
+  {{center.text}}
 </view>

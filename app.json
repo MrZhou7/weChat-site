@@ -1,14 +1,37 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/site/site",
-    "pages/logs/logs"
+    "pages/site/morning/morning",
+    "pages/site/meeting/meeting",
+    "pages/site/check/check",
+    "pages/site/businesstalk/businesstalk",
+    "pages/help/help",
+    "pages/orderList/orderList",
+    "pages/orderList/orderDetail/orderDetail",
+    "pages/ranking/ranking",
+    "pages/log/log",
+    "pages/notice/notice",
+    "pages/notice/noticeDetail/noticeDetail",
+    "pages/management/management",
+    "pages/management/market/market",
+    "pages/management/addMarket/addMarket",
+    "pages/management/advice/advice",
+    "pages/management/addAdvice/addAdvice",
+    "pages/center/center"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "欧亚达现场管理",
     "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "WechatSI": {
+    "version": "0.2.2",
+    "provider": "wx069ba97219f66d99"
+    }
   },
   "sitemapLocation": "sitemap.json"
 }

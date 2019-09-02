@@ -1,131 +1,109 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var api = require('../../utils/request.js').default;
 
 Page({
   data: {
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    list: [{
-      text: '我在现场',
-      id: '1',
-      icon: 'icon-wozaixianchang',
-      color: '#42b5cd',
-      content: '晨会 / 迎宾 / 晨巡 / 午巡'
-    },
-    {
-      text: '寻求帮助',
-      id: '2',
-      icon: 'icon-xunqiubangzhu',
-      color: '#b1ce1b',
-      content: '问题说明'
-    },
-    {
-      text: '处理工单',
-      id: '3',
-      icon: 'icon-chuligongdan',
-      color: '#8a6d3b',
-      content: '紧急事项 / 待处理 / 待验收 / 已完成'
-    }, {
-      text: '火眼金睛',
-      id: '4',
-      icon: 'icon-icon',
-      color: '#f9644d',
-      content: '现场问题数量排名'
-    }, {
-      text: '劳苦功高',
-      id: '5',
-      icon: 'icon-paiming',
-      color: '#1479b2',
-      content: '解决问题数量排名'
-    }, {
-      text: '查看公告',
-      id: '6',
-      icon: 'icon-gonggao1',
-      color: '#395bac',
-      content: '工作事项 / 管理制度'
-    }, {
-      text: '事项记录',
-      id: '7',
-      icon: 'icon-lianluojilu',
-      color: '#9c6aec',
-      content: '商户罚单 / 今日事件 / 服务亮点'
-    }, {
-      text: '管理提升',
-      id: '8',
-      icon: 'icon-guanli',
-      color: '#3ebebf',
-      content: '市调对标 / 意见建议'
-    }, {
-      text: '工作统计',
-      id: '9',
-      icon: 'icon-gongzuotongji1',
-      color: '#b0db81',
-      content: '提报问题数量 / 解决问题数量'
-    }
-    // , {
-    //   text: '高管行程',
-    //   id: '9',
-    //   icon: 'icon-usertie',
-    //   color: '#58cc7b'
-    // }, {
-    //   text: '设置',
-    //   id: '10',
-    //   icon: 'icon-icon_setting',
-    //   color: '#e44275'
-    // }
-    ]
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+    list:[
+      {
+        id: '1',
+        text: '我在现场',
+        bg:'../../images/1.jpg'
+      },
+      {
+        id: '2',
+        text: '寻求帮助',
+        bg: '../../images/2.jpg'
+      },
+      {
+        id: '3',
+        text: '处理工单',
+        bg: '../../images/3.jpg'
+      }, {
+        id: '4',
+        text: '火眼金睛',
+        bg: '../../images/4.jpg'
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+      , {
+        id: '5',
+        text: '劳苦功高',
+        bg: '../../images/5.jpg'
+      }
+      , {
+        id: '6',
+        text: '查看公告',
+        bg: '../../images/6.jpg'
+      }
+      , {
+        id: '7',
+        text: '事项记录',
+        bg: '../../images/7.jpg'
+      }
+      , {
+        id: '8',
+        text: '管理提升',
+        bg: '../../images/8.jpg'
+      }
+    ],
+    center: {
+      id: '9',
+      text: '个人中心'
     }
   },
-  // getUserInfo: function(e) {
-  //   console.log(e)
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   this.setData({
-  //     userInfo: e.detail.userInfo,
-  //     hasUserInfo: true
-  //   })
-  // },
+  onLoad: function (options) {
+    
+  },
+  getCenter: function(e){
+    let name = e.currentTarget.dataset.text;
+    let num = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../center/center?id=' + num + '&name=' + name,
+    });
+  },
   getInto: function(e) {
-    console.log(e)
+    var that = this;
+    let name = e.currentTarget.dataset.text;
     let num = e.currentTarget.dataset.id;
     switch(num) {
       case '1':
         wx.navigateTo({
-          url: '../site/site',
+          url: '../site/site?id=' + num + '&name=' + name,
+        });
+        break;
+      case '2':
+        wx.navigateTo({
+          url: '../help/help?id=' + num + '&name=' + name,
+        });
+        break;
+      case '3':
+        wx.navigateTo({
+          url: '../orderList/orderList?id=' + num + '&name=' + name,
+        });
+        break;
+      case '4':
+        wx.navigateTo({
+          url: '../ranking/ranking?type1=hyjj' + '&name=提报问题数量排名',
+        });
+        break;
+      case '5':
+        wx.navigateTo({
+          url: '../ranking/ranking?type1=lkgg' + '&name=解决问题数量排名',
+        });
+        break;
+      case '6':
+        wx.navigateTo({
+          url: '../notice/notice?id=' + num + '&name=' + name,
+        });
+        break;
+      case '7':
+        wx.navigateTo({
+          url: '../log/log?id=' + num + '&name=' + name,
+        });
+        break;
+      case '8':
+        wx.navigateTo({
+          url: '../management/management?id=' + num + '&name=' + name,
         });
         break;
     }

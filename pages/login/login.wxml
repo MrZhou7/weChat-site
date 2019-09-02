@@ -1,0 +1,51 @@
+<!--pages/login/login.wxml-->
+<view  wx:if="{{isPageHide}}">
+  <!-- 绑定工号 -->
+  <view class="input_box" wx:if="{{isHide}}">
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">账号</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input bindinput="userInput" type="number" autofocus class="weui-input" placeholder="请输入账号"/>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+        <view class="weui-label">密码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input bindinput="passInput" type="password" class="weui-input" placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" bindtap="goUserInfo" type="primary"> 绑 定 </button>
+    </view>
+  </view>
+  <!-- 绑定区域和门店 -->
+  <view class="weui-cells weui-cells_after-title" wx:if="{{!isHide}}">
+    <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">选择区域</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindAreaChange" value="{{areaIndex}}" range="{{area}}">
+                <view class="weui-select weui-select_in-select-after">{{area[areaIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">选择门店</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindMallChange" value="{{mallIndex}}" range="{{mall}}">
+                <view class="weui-select weui-select_in-select-after">{{mall[mallIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" bindtap="goMallInfo" type="primary"> 确 定 </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,44 @@
+/* pages/notice/notice.wxss */
+
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-navbar__item{
+  font-size:14px;
+}
+.weui-cell__bd text{
+  padding-left: 36rpx;
+}
+.weui-cell__bd {
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+}
+.box{
+  display: flex;
+  flex-direction:row ;
+  justify-content: center;
+  border-top: 1rpx solid rgba(0,0,0,.1);
+  font-size: 14px;
+  padding: 10px;
+  line-height: 30px;
+}
+.box_left{
+  flex: 1;
+  align-items: center;
+}
+.box image{
+  width: 30px;
+  height: 30px;
+}
+.box_right{
+  display: block;
+}
+.box_bottom{
+  display: none;
+}

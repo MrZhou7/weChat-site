@@ -1,0 +1,33 @@
+<!--pages/site/meeting/meeting.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="weui-cell">
+      <view class="weui-cell__bd">
+          <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__overview">
+                    <view class="weui-uploader__title">照 片 <text class="small"> (1张)</text></view>
+                </view>
+              </view>
+              <view class="weui-uploader__bd">
+                  <view class="weui-uploader__input-box">
+                      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                  <view class="weui-uploader__file" bindtap="previewImage" id="0">
+                    <image class="weui-uploader__img" src="{{files }}" mode="aspecFill"/>
+                  </view>
+              </view>
+          </view>
+      </view>
+  </view>
+  <view class="weui-cells__title">商违规商户名称:</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{business}}' bindinput="businessInput" placeholder="请输入违规商户名称" auto-height />
+        </view>
+    </view>
+  </view>
+   <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+  </view>
+</form>

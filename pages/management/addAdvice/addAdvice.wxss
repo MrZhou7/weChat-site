@@ -1,0 +1,4 @@
+/* pages/management/addAdvise/addAdvise.wxss */
+.weui-textarea{
+  min-height: 200px;  
+}

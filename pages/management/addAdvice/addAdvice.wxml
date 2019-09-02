@@ -1,0 +1,12 @@
+<!--pages/management/addAdvise/addAdvise.wxml-->
+<view class="weui-cells__title">对商场营运的意见及建议</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">
+        <textarea class="weui-textarea" bindinput="adviceInput" value='{{advice}}' auto-height placeholder="请输入意见及建议" />
+    </view>
+  </view>
+</view>
+<view class="weui-btn-area" wx:if="{{isShow}}">
+  <button class="weui-btn" type="primary" bindtap="submit"> 提 交 </button>
+</view>

@@ -1,0 +1,2 @@
+/* pages/notice/noticeDetail/noticeDetail.wxss */
+@import '../../../wxParse/wxParse.wxss';

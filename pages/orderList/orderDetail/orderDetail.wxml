@@ -1,0 +1,113 @@
+<!--pages/order/order.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+        <view class="weui-label">楼层</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" value='{{floor}}' bindinput="floorInput" placeholder="请输入楼层"/>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+        <view class="weui-label">区域</view>
+    </view>
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" value='{{help_area}}' bindinput="areaInput" placeholder="填写问题出现区域" auto-height />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+        <view class="weui-label">问题说明</view>
+    </view>
+    <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value='{{problem}}' bindinput="problemInput" placeholder="请填写问题情况" auto-height />
+    </view>
+  </view>
+  <!-- <view class="weui-cell">
+    <view class="button-sp-area">
+      <button class="weui-btn mini-btn" size="mini"  catchtouchstart="streamRecord" catchtouchend="endStreamRecord" type="primary">语音说明</button>
+    </view>
+  </view> -->
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+        <view class="weui-label">语音内容</view>
+    </view>
+    <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音说明翻译内容" auto-height />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+        <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__overview">
+                  <view class="weui-uploader__title">照 片 <text class="small"> (1张)</text></view>
+              </view>
+            </view>
+            <view class="weui-uploader__bd">
+                <view class="weui-uploader__file" bindtap="previewImage" id="0">
+                  <image class="weui-uploader__img" src="{{problem_pic}}" mode="aspecFill"/>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+        <view class="weui-uploader">
+            <view class="weui-uploader__hd">
+              <view class="weui-uploader__overview">
+                  <view class="weui-uploader__title">处理后照片 <text class="small"> (1张)</text></view>
+              </view>
+            </view>
+            <view class="weui-uploader__bd">
+                <view class="weui-uploader__input-box" wx:if="{{status == 1}}">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+                <view class="weui-uploader__file" bindtap="previewImageTwo" id="0">
+                  <image class="weui-uploader__img" src="{{files}}" mode="aspecFill"/>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+  <view wx:if="{{status == 2}}">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">通过</view>
+          <view class="weui-cell__ft">
+              <switch checked bindchange="switchChange" />
+          </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title" wx:if="{{!emergency}}">
+      <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">改进内容:</view>
+          </view>
+          <view class="weui-cell__bd">
+              <textarea class="weui-textarea" value='{{improvement}}' bindinput="improvementInput" placeholder="请输入改进内容" auto-height />
+          </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+        <button wx:if="{{!emergency}}" class="weui-btn" type="primary" bindtap="impriveInput"> 需要改进 </button>
+        <button wx:if="{{emergency}}" class="weui-btn" type="primary" bindtap="passInput"> 验收通过 </button>
+    </view>
+  </view>
+  <!-- 待验收返回来 -->
+  <view class="weui-cells weui-cells_after-title" wx:if="{{status_admin == 3}}">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <view class="weui-label">改进内容:</view>
+        </view>
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{improvement}}' bindinput="improvementInput" placeholder="请输入改进内容" auto-height />
+        </view>
+    </view>
+  </view>
+  <view wx:if="{{status == 1}}" class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="submitInput"> 提 交 </button>
+  </view>
+</view>

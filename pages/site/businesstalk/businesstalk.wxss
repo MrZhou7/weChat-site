@@ -1,0 +1,4 @@
+/* pages/site/businesstalk/businesstalk.wxss */
+.weui-btn-area{
+  padding-bottom: 30px;
+}

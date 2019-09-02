@@ -1,0 +1,17 @@
+/* pages/site/morning/morning.wxss */
+.small{
+  font-size: 24rpx;
+  color: red;
+}
+.weui-uploader__input-box {
+  width: 300rpx;
+  height: 300rpx;
+}
+.weui-uploader__img{
+  border:1rpx dashed rgb(219, 211, 211);
+  width: 300rpx;
+  height: 300rpx;
+}
+.weui-btn-area{
+  padding-bottom: 30px;
+}

@@ -1,0 +1,10 @@
+/* pages/log/log.wxss */
+.weui-btn-area{
+  padding-bottom: 30px;
+}
+.footBottom{
+  margin-bottom: 10px;
+}
+.title{
+  font-size: 14px;
+}

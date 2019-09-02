@@ -1,0 +1,48 @@
+<!--pages/site/businesstalk/businesstalk.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">商户名称：</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='customer_name' value='{{customer_name}}' placeholder="请输入商户名称"/>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">被访谈人：</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='people' value='{{people}}' placeholder="请输入被访谈人姓名"/>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">职位：</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='position' value='{{position}}' placeholder="请输入职位"/>
+      </view>
+    </view>
+    <view class="weui-cells__title">商户意见及建议:</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">
+              <textarea class="weui-textarea wrap" name='advice' value='{{advice}}' auto-height placeholder="请输入意见及建议" />
+          </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">予商户经营建议:</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">
+              <textarea class="weui-textarea wrap" name='business_advice' value='{{business_advice}}' auto-height placeholder="请输入予商户经营建议" />
+          </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+    </view>
+  </view>
+</form>

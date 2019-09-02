@@ -1,0 +1,70 @@
+<!--pages/help/help.wxml-->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+        <view class="weui-label">楼层</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" value='{{floor}}' bindinput="floorInput" placeholder="请输入楼层"/>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__hd">
+        <view class="weui-label">区域</view>
+    </view>
+    <view class="weui-cell__bd">
+      <textarea class="weui-textarea" value='{{help_area}}' bindinput="areaInput" placeholder="填写问题出现区域" auto-height />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+        <view class="weui-label">问题说明</view>
+    </view>
+    <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value='{{problem}}' bindinput="problemInput" placeholder="请填写问题情况" auto-height />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="button-sp-area">
+      <button class="weui-btn btn" type="primary" catchtouchstart="streamRecord" catchtouchend="endStreamRecord">点击语音说明</button>
+    </view>
+  </view>
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音说明翻译内容" auto-height />
+    </view>
+  </view>
+   <!-- <view class="weui-cell ">
+      <view> 翻译结果：{{translateText}} </view>
+    </view> -->
+   <view class="weui-cell">
+      <view class="weui-cell__bd">
+          <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__overview">
+                    <view class="weui-uploader__title">照 片 <text class="small"> (1张)</text></view>
+                </view>
+              </view>
+              <view class="weui-uploader__bd">
+                  <view class="weui-uploader__input-box">
+                      <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                  <view class="weui-uploader__file" bindtap="previewImage" id="0">
+                    <image class="weui-uploader__img" src="{{files}}" mode="aspecFill"/>
+                  </view>
+              </view>
+          </view>
+      </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">是否紧急</view>
+        <view class="weui-cell__ft">
+            <switch bindchange="switchChange" />
+        </view>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" bindtap="submitInput"> 提 交 </button>
+  </view>
+</view>

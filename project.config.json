@@ -40,12 +40,76 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
 					"name": "pages/site/site",
 					"pathName": "pages/site/site",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/site/morning/morning",
+					"pathName": "pages/site/morning/morning",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/site/meeting/meeting",
+					"pathName": "pages/site/meeting/meeting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/site/check/check",
+					"pathName": "pages/site/check/check",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/help/help",
+					"pathName": "pages/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/orderList/orderDetail/orderDetail",
+					"pathName": "pages/orderList/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/management/addMarket/addMarket",
+					"pathName": "pages/management/addMarket/addMarket",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/management/market/market",
+					"pathName": "pages/management/market/market",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/notice/notice",
+					"pathName": "pages/notice/notice",
+					"query": "",
 					"scene": null
 				}
 			]

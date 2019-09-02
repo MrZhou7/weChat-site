@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     height: auto;
-    padding-top: 10rpx;
+    padding: 10rpx 0;
     /* justify-content: center; */
     line-height: normal;
     margin: 0;
@@ -14,8 +14,14 @@
     height: 300rpx;
     text-align: center;
     color:#fff;
+    position: relative;
 }
-
+.weui-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #DD001B;
+}
 .list view{
   text-align: center;
 }
@@ -35,7 +41,7 @@
   color:#fff;
   height: 220rpx;
   line-height: 220rpx;
-  background-color: #6aaeed;
+  background-color: #9c6aec;
   display: flex;
   flex-direction: row;
 }
@@ -43,12 +49,18 @@
    flex: 2;
 }
 .step_num{
-   flex: 3;
-   color: red;
+   flex: 2;
+   color: #DD001B;
 }
 .step_num text{
-   font-size: 56rpx;
-   font-weight: bold;
-  padding: 50rpx 80rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  width: 200rpx;
   background-color: #fff;
+  display: inline-block;
+  line-height: 80px;
+  text-align: center;
+}
+.weui-cell {
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
 }
