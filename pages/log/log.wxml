@@ -1,71 +1,73 @@
 <!--pages/log/log.wxml-->
-<view class="weui-cell weui-cell_switch">
-    <view class="weui-cell__bd">商户罚单</view>
-</view>
-<view class="weui-cells__title">商户名称：(多商户以“,”隔开，下同)</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell ">
-    <view class="weui-cell__bd">
-      <textarea class="weui-textarea" placeholder="请输入商户名称" value='{{coustmer_name}}' bindinput="coustmerInput" auto-height />
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">商户罚单</view>
+  </view>
+  <view class="weui-cells__title">商户名称：(多商户以“,”隔开，下同)</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="请输入商户名称" name='coustmer_name' value='{{coustmer_name}}' auto-height />
+      </view>
     </view>
   </view>
-</view>
-<view class="weui-cells__title">罚款事由：</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell ">
-      <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入罚款事由" value='{{reasons}}' bindinput="reasonsInput" bindinput="businessInput" auto-height />
-      </view>
-  </view>
-</view>
-<view class="weui-cells__title">罚款金额：</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell ">
-      <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入罚款金额" value='{{money}}' bindinput="moneyInput" bindinput="businessInput" auto-height />
-      </view>
-  </view>
-</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_switch">
-    <view class="weui-cell__bd title">是否缴纳:</view>
-    <view class="weui-cell__ft">
-        <switch checked bindchange="switch1Change" />
+  <view class="weui-cells__title">罚款事由：</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入罚款事由" name='reasons' value='{{reasons}}' auto-height />
+        </view>
     </view>
   </view>
-</view>
-<view class="weui-cells__title">今日重要事件</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell ">
-      <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入今日重要事件" value='{{important}}' bindinput="importantInput" auto-height />
-      </view>
+  <view class="weui-cells__title">罚款金额：</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入罚款金额" name='money' value='{{money}}' auto-height />
+        </view>
+    </view>
   </view>
-</view>
-<view class="weui-cells__title">服务亮点</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell ">
-      <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入服务亮点" value='{{lightspot}}' bindinput="lightspotInput" auto-height />
-      </view>
-  </view>
-</view>
-<view class="weui-cells weui-cells_after-title">
-  <view class="weui-cell weui-cell_switch">
-      <view class="weui-cell__bd title">明日是否正常上班:</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd title">是否缴纳:</view>
       <view class="weui-cell__ft">
-          <switch checked bindchange="switch2Change"/>
+          <switch checked bindchange="switch1Change" />
       </view>
     </view>
-</view>
-<view class="weui-cells__title">次日晨会宣讲内容记录</view>
-<view class="weui-cells weui-cells_after-title footBottom">
-  <view class="weui-cell ">
-      <view class="weui-cell__bd">
-          <textarea class="weui-textarea" style="min-height: 80px;" placeholder="请输入内容记录" value='{{morrow}}' bindinput="morrowInput" auto-height />
+  </view>
+  <view class="weui-cells__title">今日重要事件</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入今日重要事件" name='important' value='{{important}}' auto-height />
+        </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">服务亮点</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell ">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入服务亮点" name='lightspot' value='{{lightspot}}' auto-height />
+        </view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd title">明日是否正常上班:</view>
+        <view class="weui-cell__ft">
+            <switch checked bindchange="switch2Change"/>
+        </view>
       </view>
   </view>
-</view>
-<view class="weui-btn-area" wx:if="{{isShow}}">
-    <button class="weui-btn" type="primary" bindtap="submitInput"> 提 交 </button>
-</view>
+  <view class="weui-cells__title">次日晨会宣讲内容记录</view>
+  <view class="weui-cells weui-cells_after-title footBottom">
+    <view class="weui-cell ">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" style="min-height: 80px;" placeholder="请输入内容记录" name='morrow' value='{{morrow}}' auto-height />
+        </view>
+    </view>
+  </view>
+  <view class="weui-btn-area" wx:if="{{isShow}}">
+      <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+  </view>
+</form>

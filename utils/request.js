@@ -13,7 +13,9 @@ const apiRequest = (url, method, data, header) => {     //接收所需要的参�
           //接口调用成功
           resolve(res);    //根据业务需要resolve接口返回的json的数据
         } else if (res.data.code == 9999) {
-          wx.showModal({ content: res.data.msg, showCancel: false, })
+          wx.showModal({ 
+            content: res.data.msg,
+            showCancel: false, })
           wx.redirectTo({
             url: '/pages/login/login',
           })
@@ -21,8 +23,7 @@ const apiRequest = (url, method, data, header) => {     //接收所需要的参�
           wx.showToast({
             title: res.data.msg,
             icon: 'none',
-            duration: 1500
-          })
+            duration: 1500 })
         }
        
       },

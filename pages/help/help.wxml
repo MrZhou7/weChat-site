@@ -26,12 +26,17 @@
   </view>
   <view class="weui-cell">
     <view class="button-sp-area">
-      <button class="weui-btn btn" type="primary" catchtouchstart="streamRecord" catchtouchend="endStreamRecord">点击语音说明</button>
+      <button class="weui-btn btn" type="default" bindtap="clearVoice">清 空</button>
+    </view>
+    <view class="button-sp-area"></view>
+    <view class="button-sp-area"></view>
+    <view class="button-sp-area">
+      <button class="weui-btn btn" type="primary" catchtouchstart="streamRecord" catchtouchend="endStreamRecord">按住 说话</button>
     </view>
   </view>
   <view class="weui-cell ">
     <view class="weui-cell__bd">
-        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音说明翻译内容" auto-height />
+        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音内容" auto-height maxlength="10000" />
     </view>
   </view>
    <!-- <view class="weui-cell ">
@@ -64,7 +69,7 @@
         </view>
     </view>
   </view>
-  <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" bindtap="submitInput"> 提 交 </button>
-  </view>
+</view>
+<view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="submitInput"> 提 交 </button>
 </view>

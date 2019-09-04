@@ -20,7 +20,8 @@ Page({
     mallIndex: 0,
     mallList: [],
     mallName:'',
-    gh:''
+    gh:'',
+    bmsx: null
   },
 
   /**
@@ -32,14 +33,16 @@ Page({
       let dataList = res.data.data;
       console.log(dataList)
       that.setData({
-        areaName: dataList.area,
-        area_id: dataList.area_id,
-        gh: dataList.gh
+        gh: dataList.gh,
+        bmsx: dataList.bmsx
       })
       if (dataList.bmsx == 0) {
         api.getArea({ session_key: wx.getStorageSync('session_key') }).then(req => {
+          console.log(req)
           let areaData = common.getCompanyname(req.data.data)
           that.setData({ 
+            areaName: req.data.data[0].subcompanyname,
+            area_id: req.data.data[0].id,
             area: areaData, 
             areaList: req.data.data
            })
@@ -47,6 +50,8 @@ Page({
       } else if (dataList.bmsx == 1) {
         that.setData({
           area: [dataList.area],
+          areaName: dataList.area,
+          area_id: dataList.area_id,
         })
         let data = {
           session_key: wx.getStorageSync('session_key'),
@@ -74,38 +79,52 @@ Page({
   // 选择区域
   bindAreaChange: function (e) {
     console.log(e)
-    this.setData({ 
-      areaIndex: e.detail.value, 
-      area_id: this.data.areaList[e.detail.value].id,
-      areaName: this.data.areaList[e.detail.value].subcompanyname
+    if (this.data.bmsx == 0){
+     this.setData({
+       areaIndex: e.detail.value,
+       area_id: this.data.areaList[e.detail.value].id,
+       areaName: this.data.areaList[e.detail.value].subcompanyname
      })
-    let data = {
-      session_key: wx.getStorageSync('session_key'),
-      id: this.data.areaList[e.detail.value].id
-    }
-    this.getMall(data, this)
+     let data = {
+       session_key: wx.getStorageSync('session_key'),
+       id: this.data.areaList[e.detail.value].id
+     }
+     this.getMall(data, this)
+   }
   },
   // 选择门店
   bindMallChange: function (e) {
     console.log(e)
-    this.setData({
-      mallIndex: e.detail.value,
-      mall_id: this.data.mallList[e.detail.value].id,
-      areaName: this.data.mallList[e.detail.value].subcompanyname,
-    })
+    if (this.data.bmsx == 0 || this.data.bmsx == 1){
+      this.setData({
+        mallIndex: e.detail.value,
+        mall_id: this.data.mallList[e.detail.value].id,
+        areaName: this.data.mallList[e.detail.value].subcompanyname,
+      })
+    }
   },
   // 获取门店信息
   getMall: function (data, _this) {
     api.getMall(data).then(res => {
       console.log(res)
-      let mallData = common.getCompanyname(res.data.data)
-      _this.setData({
-        mallIndex: 0,
-        mall: mallData,
-        mallList: res.data.data,
-        mall_id: res.data.data[0].id,
-        mallName: res.data.data[0].subcompanyname
-      })
+      if (res.data.data.length > 0){
+       let mallData = common.getCompanyname(res.data.data)
+       _this.setData({
+         mallIndex: 0,
+         mall: mallData,
+         mallList: res.data.data,
+         mall_id: res.data.data[0].id,
+         mallName: res.data.data[0].subcompanyname
+       })
+     } else {
+        _this.setData({
+          mall: [],
+          mall_id: null,
+          mallIndex: 0,
+          mallList: [],
+          mallName: '',
+        })
+      }
     })
   },
   submit:function() {

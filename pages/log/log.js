@@ -1,4 +1,5 @@
 // pages/log/log.js
+import WxValidate from '../../utils/WxValidate.js'
 import api from '../../utils/request.js'
 import common from '../../utils/common.js'
 var App = getApp()
@@ -23,6 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.initValidate();
     api.getRecordDetail({
       session_key: wx.getStorageSync('session_key')
     }).then(res => {
@@ -44,78 +46,75 @@ Page({
     })
   },
   //提交
-  submitInput:function(){
-    console.log(this.data)
-    if (this.data.coustmer_name == '') {
-      common.alertMsg('请填写商户名称')
-      return
-    }
-    let data = {
-      coustmer_name: this.data.coustmer_name,
-      reasons: this.data.reasons,
-      money: this.data.money,
-      status: this.data.status,
-      important: this.data.important,
-      lightspot: this.data.lightspot,
-      morrow: this.data.morrow,
-      work: this.data.work,
-      session_key: wx.getStorageSync('session_key')
-    }
-    api.addRecord(data).then(res =>{
-      wx.navigateBack({
-        detail: 1
+  formSubmit: function (e){
+    var that = this;
+    const params = e.detail.value
+    if (!that.WxValidate.checkForm(params)) {
+      const error = that.WxValidate.errorList[0]
+      that.showModal(error)
+      return false
+    } else{
+      let data = {
+        coustmer_name: params.coustmer_name,
+        reasons: params.reasons,
+        money: params.money,
+        status: this.data.status,
+        important: params.important,
+        lightspot: params.lightspot,
+        morrow: params.morrow,
+        work: this.data.work,
+        session_key: wx.getStorageSync('session_key')
+      }
+      wx.showLoading()
+      api.addRecord(data).then(res => {
+        wx.navigateBack({
+          detail: 1
+        })
       })
-    })
+    }
+  },
+  //验证函数
+  initValidate() {
+    const rules = {
+      coustmer_name: {
+        required: true
+      },
+      money: {
+        number: true
+      }
+    }
+    const messages = {
+      coustmer_name: {
+        required: '请填写商户名称'
+      },
+      money: {
+        number: '请输入有效的数字'
+      }
+    }
+    this.WxValidate = new WxValidate(rules, messages)
   },
 
-  // 商户名称
-  coustmerInput:function(e) {
-    this.setData({
-      coustmer_name: e.detail.value
+  //报错 
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
     })
   },
-  // 罚款事由
-  reasonsInput: function (e) {
-    this.setData({
-      reasons: e.detail.value
-    })
-  },
-  // 罚款金额
-  moneyInput: function (e) {
-    this.setData({
-      money: e.detail.value
-    })
-  },
-  // 重要事件
-  importantInput: function (e) {
-    this.setData({
-      important: e.detail.value
-    })
-  },
-  //是否缴纳
+ 
+  // //是否缴纳
   switch1Change: function (e) {
     this.setData({
       status: isNumber(e.detail.value)
     })
   },
-  //是否上班
+  // //是否上班
   switch2Change: function (e) {
     this.setData({
       work: isNumber(e.detail.value)
     })
   },
-  // 服务亮点
-  lightspotInput: function (e) {
-    this.setData({
-      lightspot: e.detail.value
-    })
-  },
-  // 宣讲内容记录
-  morrowInput: function (e) {
-    this.setData({
-      morrow: e.detail.value
-    })
-  },
+
   isNumber(data){
     if (data) {
       return 1

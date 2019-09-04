@@ -13,9 +13,9 @@ Page({
     floor: '',
     help_area: "",
     problem:'',
-    problem_pic: '',
+    problem_pic: [],
     voice: '',
-    files: '',
+    files: [],
     pic: '',
     improvement: '',
     emergency: true,
@@ -28,17 +28,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     wx.showLoading()
     api.getOrderDetail({ session_key: wx.getStorageSync('session_key'), id: options.id }).then(res =>{
       let detail = res.data.data;
+      console.log(detail)
       this.setData({
         floor: detail.floor,
         help_area: detail.help_area,
         problem: detail.problem,
         voice: detail.voice,
-        problem_pic: baseUrl + detail.problem_pic,
-        files: detail.solve_pic,
+        problem_pic: [baseUrl + detail.problem_pic],
+        files: [baseUrl + detail.solve_pic],
         id: options.id,
         improvement: detail.improvement,
         status: options.num,
@@ -49,21 +49,13 @@ Page({
 
   //上传照片
   chooseImage: function (e) {
-    common.chooseImage(this, this.data.pic, this.data.problem_pic)
+    common.chooseImage(this, this.data.files, this.data.pic)
   },
 
   //是否紧急
   switchChange: function (e) {
     this.setData({
       emergency: e.detail.value
-    })
-  },
-
-  //查看照片大图
-  previewImage: function (e) {
-    wx.previewImage({
-      current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: this.data.files // 需要预览的图片http链接列表
     })
   },
 
@@ -84,7 +76,7 @@ Page({
   //绑定问题说明
   problemInput: function (e) {
     this.setData({
-      problem_pic: e.detail.value
+      problem: e.detail.value
     })
   },
 
@@ -102,13 +94,13 @@ Page({
     })
   },
 
-  //提交、待验收或通过
+  //提交
   submitInput: function () {
     let data = {
       id: this.data.id,
       session_key: wx.getStorageSync('session_key'),
       status : 1,
-      solve_pic: this.data.files
+      solve_pic: this.data.pic
     }
     api.updateHelp(data).then(res =>{
       wx.navigateBack({     //返回上一页面
@@ -116,19 +108,25 @@ Page({
       })
     })
   },
+  //待验收
   impriveInput: function () {
-    let data = {
-      id: this.data.id,
-      session_key: wx.getStorageSync('session_key'),
-      status: 3,
-      improvement: this.data.improvement
-    }
-    api.updateHelp(data).then(res => {
-      wx.navigateBack({     //返回上一页面
-        delta: 1,
+    if (this.data.improvement == '' || this.data.improvement == null){
+      common.alertMsg("改进内容不能为空")
+    } else{
+      let data = {
+        id: this.data.id,
+        session_key: wx.getStorageSync('session_key'),
+        status: 3,
+        improvement: this.data.improvement
+      }
+      api.updateHelp(data).then(res => {
+        wx.navigateBack({     //返回上一页面
+          delta: 1,
+        })
       })
-    })
+    }
   },
+  //通过
   passInput: function () {
     let data = {
       id: this.data.id,
@@ -141,12 +139,11 @@ Page({
       })
     })
   },
-
   //查看照片大图
   previewImage: function (e) {
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
-      urls: [this.data.problem_pic] // 需要预览的图片http链接列表
+      urls: this.data.problem_pic // 需要预览的图片http链接列表
     })
   },
   previewImageTwo: function (e) {

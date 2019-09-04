@@ -6,7 +6,7 @@
           <view class="weui-label">市调项目名称：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='project_name' bindinput="projectInput" value='{{project_name}}' placeholder="请输入市调项目名称"/>
+          <input class="weui-input" name='project_name' value='{{project_name}}' placeholder="请输入市调项目名称"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -14,7 +14,7 @@
           <view class="weui-label">开发商：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='developer' bindinput="developerInput" value='{{developer}}' placeholder="请输入开发商名称"/>
+          <input class="weui-input" name='developer' value='{{developer}}' placeholder="请输入开发商名称"/>
       </view>
     </view>
 
@@ -23,7 +23,7 @@
           <view class="weui-label">开业时间：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='start' bindinput="startInput" value='{{start}}' placeholder="请输入开业时间"/>
+          <input class="weui-input" name='start' value='{{start}}' placeholder="请输入开业时间"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -31,7 +31,7 @@
           <view class="weui-label">地址：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='address' bindinput="addressInput" value='{{address}}' placeholder="请输入地址"/>
+          <input class="weui-input" name='address' value='{{address}}' placeholder="请输入地址"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -39,7 +39,7 @@
           <view class="weui-label">经营面积：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='area' bindinput="areaInput" value='{{area}}' placeholder="请输入经营面积"/>
+          <input class="weui-input" name='area' value='{{area}}' placeholder="请输入经营面积"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -47,7 +47,7 @@
           <view class="weui-label">商业楼层：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='floor' bindinput="floorInput" value='{{floor}}' placeholder="请输入商业楼层"/>
+          <input class="weui-input" name='floor' value='{{floor}}' placeholder="请输入商业楼层"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -55,7 +55,7 @@
           <view class="weui-label">档次定位：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='level' bindinput="levelInput" value='{{level}}' placeholder="请输入档次定位"/>
+          <input class="weui-input" name='level' value='{{level}}' placeholder="请输入档次定位"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -63,7 +63,7 @@
           <view class="weui-label">停车位数量：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='parking_num' bindinput="parkingInput" value='{{parking_num}}' placeholder="请输入停车位数量"/>
+          <input class="weui-input" name='parking_num' value='{{parking_num}}' placeholder="请输入停车位数量"/>
       </view>
     </view>
     <view class="weui-cell">
@@ -71,15 +71,15 @@
           <view class="weui-label">经营商户数量：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='constmer_num' bindinput="constmerInput" value='{{constmer_num}}' placeholder="请输入经营商户数量"/>
+          <input class="weui-input" name='constmer_num' value='{{constmer_num}}' placeholder="请输入经营商户数量"/>
       </view>
     </view>
     <view class="weui-cell">
       <view class="weui-cell__hd">
-          <view class="weui-label">租金情况及形式：</view>
+          <view class="weui-label">租金情况：</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='rent' bindinput="rentInput" value='{{rent}}' placeholder="请输入租金情况及形式"/>
+          <input class="weui-input" name='rent' value='{{rent}}' placeholder="请输入租金情况及形式"/>
       </view>
     </view>
     <view wx:for="{{log}}" wx:key="item" wx:for-index='i' class="wrap"> 
@@ -95,7 +95,7 @@
                   <view class="weui-uploader__input-box" wx:if="{{isShow}}">
                       <view class="weui-uploader__input" bindtap="chooseLogImage" data-index="{{i}}"></view>
                   </view>
-                  <view class="weui-uploader__file" bindtap="previewLogImage" id="{{i}}">
+                  <view class="weui-uploader__file" bindtap="previewImage" id="{{i}}">
                     <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
                   </view>
               </view>
@@ -127,7 +127,7 @@
                   <view class="weui-uploader__input-box" wx:if="{{isShow}}">
                       <view class="weui-uploader__input" bindtap="chooseLogImageTwo" data-index="{{i}}"></view>
                   </view>
-                  <view class="weui-uploader__file" bindtap="previewLogImage" id="{{i}}">
+                  <view class="weui-uploader__file" bindtap="previewImageTwo" id="{{i}}">
                     <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
                   </view>
               </view>
@@ -149,11 +149,11 @@
     <view class="weui-cells__title">启发与借鉴：</view>
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <textarea class="weui-textarea" style="min-height: 100px;" name='enlighten' bindinput="enlightenInput" value='{{enlighten}}' auto-height placeholder="请输入启发与借鉴" />
+        <textarea class="weui-textarea" style="min-height: 100px;" name='enlighten' value='{{enlighten}}' auto-height placeholder="请输入启发与借鉴" />
       </view>
     </view>
-    <view class="weui-btn-area" wx:if="{{isShow}}">
-      <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
-    </view>
+  </view>
+  <view class="weui-btn-area" wx:if="{{isShow}}">
+    <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
   </view>
 </form>

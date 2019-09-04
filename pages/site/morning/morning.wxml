@@ -1,38 +1,40 @@
 <!--pages/site/morning/morning.wxml-->
-<view class="weui-cell">
-    <view class="weui-cell__bd">
-        <view class="weui-uploader">
-            <view class="weui-uploader__hd">
-              <view class="weui-uploader__overview">
-                  <view class="weui-uploader__title">图片上传 <text class="small"> (1张)</text></view>
-              </view>
-            </view>
-            <view class="weui-uploader__bd">
-                <view class="weui-uploader__input-box">
-                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__overview">
+                      <view class="weui-uploader__title">图片上传 <text class="small"> (1张)</text></view>
+                  </view>
                 </view>
-                <view class="weui-uploader__file" bindtap="previewImage" id="0">
-                  <image class="weui-uploader__img" src="{{files }}" mode="aspecFill"/>
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
+                        <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                    </view>
+                    <view class="weui-uploader__file" bindtap="previewImage" id="0">
+                      <image class="weui-uploader__img" src="{{files}}" mode="aspecFill"/>
+                    </view>
                 </view>
             </view>
         </view>
     </view>
-</view>
-<form bindsubmit="formSubmit" bindreset="formReset">
-  <view class="weui-cell ">
-    <view class="weui-cell__hd">
-        <view class="weui-label">应到人数</view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">应到人数</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='should_num' value='{{should_num}}' placeholder="请输入应到人数"/>
+      </view>
     </view>
-    <view class="weui-cell__bd">
-        <input class="weui-input" name='beNum' value='{{beNum}}' placeholder="请输入应到人数"/>
-    </view>
-  </view>
-  <view class="weui-cell ">
-    <view class="weui-cell__hd">
-        <view class="weui-label">实到人数</view>
-    </view>
-    <view class="weui-cell__bd">
-        <input class="weui-input" name='actualNum' value='{{actualNum}}' placeholder="请输入实到人数"/>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">实到人数</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='arrived_num' value='{{arrived_num}}' placeholder="请输入实到人数"/>
+      </view>
     </view>
   </view>
   <view class="weui-cells__title">请假商户名:</view>
@@ -60,6 +62,6 @@
     </view>
   </view>
   <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+    <button class="weui-btn" type="primary" form-type="submit" wx:if="{{isBtn}}"> 提 交 </button>
   </view>
 </form>

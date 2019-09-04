@@ -8,13 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["重点工作", "规章制度"],
+    tabs: ["公告", "规章制度"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
     noticeList: [],
     rulsList: [],
-    isShow: false
+    isShow: false,
+    num: null
   },
 
   /**
@@ -77,9 +78,8 @@ Page({
     console.log(e)
     if (e.currentTarget.dataset.list.length > 0) {
         this.setData({
-          isShow: !this.data.isShow
+          num: e.currentTarget.dataset.index
         })
     }
-    console.log(this.data.isShow)
   }
 })

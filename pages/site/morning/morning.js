@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    files: '',
+    files: [],
     pic:"",
     beNum: '', // 应到人数
     actualNum: '', // 实到人数
@@ -18,13 +18,20 @@ Page({
     absent: '', // 无故缺席商户名
     frock: '', // 工装不整商户名
     isSubmit: true,
-    id: null
+    id: null,
+    isBtn:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (App.globalData.date != ''){
+      this.setData({
+        isBtn: common.isToday(App.globalData.date)
+      })
+    }
+    
     this.initValidate();
     let _this = this;
     let centerInfo = {
@@ -42,7 +49,7 @@ Page({
           const reqData =  res.data.data;
           console.log(reqData)
           this.setData({
-            files: apiList.base + reqData.pic,
+            files: [apiList.base + reqData.pic],
             pic: reqData.pic,
             beNum: reqData.should_num, // 应到人数
             actualNum: reqData.arrived_num, // 实到人数
@@ -59,7 +66,6 @@ Page({
   chooseImage: function () { // 拍照上传
     common.chooseImage(this, this.data.files, this.data.pic)
   },
- 
   formSubmit: function (e) { // 提交
     var that = this;
     const params = e.detail.value

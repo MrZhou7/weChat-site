@@ -39,7 +39,7 @@ Page({
           wx.setStorageSync('session_key', list.data.session_key)
         
           api.getInfo({ session_key: wx.getStorageSync('session_key') }).then(req => { // 获取当前用户登录信息
-            // console.log(req)
+            console.log(req)
             if (Object.keys(req.data.data).length == 0) { // 绑定工号 姓名
               _this.setData({
                 isPageHide: true
@@ -53,18 +53,18 @@ Page({
               api.getOaData({ session_key: wx.getStorageSync('session_key'), gh: req.data.data.gh }).then(res => { // 获取用户所在区域
                 console.log(res)
                 let reqData = res.data.data;
-                if (reqData.area_id == 0 && reqData.mall_id == 0) {
-                  _this.getArea(_this);
-                } else if (reqData.area_id != 0 && reqData.mall_id != 0){
+                if (reqData.area_id == 0 && reqData.mall_id == 0) { // 为总部人员，需选择区域、门店
+                  _this.getArea(_this);  // 获取区域信息
+                } else if (reqData.area_id != 0 && reqData.mall_id != 0){ // 为门店人员，直接赋值区域、门店
                   _this.setData({
                     area: [reqData.area],
                     areaId: reqData.area_id,
+                    areaName: reqData.area,
                     mall: [reqData.mall],
                     mallId: reqData.mall_id,
-                    areaName: reqData.area,
                     mallName: reqData.mall
                   })
-                } else {
+                } else { // 为区域人员，规定区域，可选门店
                   _this.setData({
                     area: [reqData.area],
                     areaId: reqData.area_id,
@@ -76,7 +76,7 @@ Page({
                   })
                 }
               })
-            } else {
+            } else { // 全部绑定完毕
               _this.setData({
                 user: req.data.data.gh
               })
@@ -90,14 +90,13 @@ Page({
     })
   },
 
-  goUserInfo: function(e) { // 绑定Oa账号
+  goUserInfo: function(e) { // 绑定Oa账号提交
     var that = this;
     if (that.data.user == '') {
       wx.showModal({ content: '请输入账号', showCancel: false, })
     } else if  (that.data.password == ''){
       wx.showModal({ content: '请输入密码', showCancel: false, })
     } else{
-      this.setData({disabled: true,loading: true,})
       let params = {
         session_key: wx.getStorageSync('session_key'),
         gh: that.data.user,
@@ -141,21 +140,30 @@ Page({
     api.getArea({ session_key: wx.getStorageSync('session_key') }).then(res => {
       console.log(res)
       let areaData = common.getCompanyname(res.data.data)
-      that.setData({ area: areaData, areaList: res.data.data, areaId: res.data.data[0].id })
+      that.setData({ 
+        area: areaData, 
+        areaList: res.data.data, 
+        areaId: res.data.data[0].id,
+        areaName: res.data.data[0].subcompanyname,
+       })
       let data = {
         session_key: wx.getStorageSync('session_key'),
         id: res.data.data[0].id
       }
-      this.getMall(data, that, 0)
+      this.getMall(data, that)
     })
   },
   bindAreaChange: function (e) { // 选择区域
-    this.setData({ areaIndex: e.detail.value })
+    this.setData({ 
+      areaIndex: e.detail.value,
+      areaId: this.data.areaList[e.detail.value].id,
+      areaName: this.data.areaList[e.detail.value].subcompanyname,
+     })
     let data = {
       session_key: wx.getStorageSync('session_key'),
       id: this.data.areaList[e.detail.value].id
     }
-    this.getMall(data, this, e.detail.value)
+    this.getMall(data, this)
   },
   bindMallChange: function (e) { // 选择门店
     console.log(e)
@@ -165,7 +173,52 @@ Page({
       mallName: this.data.mallList[e.detail.value].subcompanyname,
     })
   },
-  goMallInfo: function(e){
+  getMallByArea(_this, data) { // 根据区域id获取门店信息
+    api.getMall(data).then(res => {
+      console.log(res)
+      let mallData = common.getCompanyname(res.data.data)
+      if (res.data.data.length > 0) {
+        _this.setData({
+          mall: [mallData],
+          mallList: res.data.data,
+          mallId: res.data.data[0],
+          mallName: res.data.data[0].subcompanyname
+        })
+      } else {
+        _this.setData({
+          mall: [],
+          mall_id: null,
+          mallIndex: 0,
+          mallList: [],
+          mallName: '',
+        })
+      }
+    })
+  },
+  getMall: function (data, _this) { // 选择是默认第一个还是根据选择来定区域
+    api.getMall(data).then(res => {
+      console.log(res)
+      let mallData = common.getCompanyname(res.data.data)
+      console.log(mallData)
+      if (res.data.data.length > 0){
+        _this.setData({
+          mall: mallData,
+          mallList: res.data.data,
+          mallId: res.data.data[0].id,
+          mallName: res.data.data[0].subcompanyname
+        })
+      } else {
+        _this.setData({
+          mall: [],
+          mall_id: null,
+          mallIndex: 0,
+          mallList: [],
+          mallName: '',
+        })
+      }
+    })
+  },
+  goMallInfo: function(e){ // 绑定区域门店
     var that = this;
     if (that.data.areaId == '') {
       wx.showModal({ content: '请选择区域', showCancel: false, })
@@ -180,6 +233,7 @@ Page({
         area: that.data.areaName,
         mall: that.data.mallName
       };
+      console.log(params)
       api.bindMall(params).then(res =>{
         wx.redirectTo({
           url: '../index/index'
@@ -187,40 +241,13 @@ Page({
       })
     }
   },
-  getMallByArea(_this,data){ // 根据区域id获取门店信息
-    api.getMall(data).then(res => {
-      console.log(res)
-      let mallData = common.getCompanyname(res.data.data)
-      _this.setData({
-        mall: [mallData],
-        mallList: res.data.data,
-        mallId: res.data.data[0],
-        mallName: res.data.data[0].subcompanyname
-      })
-    })
-  },
-  getMall: function (data, _this ,index){ // 选择是默认第一个还是根据选择来定区域
-    api.getMall(data).then(res => {
-      console.log(res)
-      let mallData = common.getCompanyname(res.data.data)
-      console.log(mallData)
-      _this.setData({
-        mall: mallData,
-        mallList: res.data.data,
-        mallId: res.data.data[0].id,
-        mallName: res.data.data[0].subcompanyname,
-        areaId: _this.data.areaList[index].id,
-        areaName: _this.data.areaList[index].subcompanyname,
-      })
-    })
-  },
   
-  userInput: function (e) {
+  userInput: function (e) { // 获取账号
     this.setData({
       user: e.detail.value
     })
-  },
-  passInput: function (e) {
+  }, 
+  passInput: function (e) { // 获取密码
     this.setData({
       password: e.detail.value
     })

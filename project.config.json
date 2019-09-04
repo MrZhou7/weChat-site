@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -109,6 +109,13 @@
 					"id": -1,
 					"name": "pages/notice/notice",
 					"pathName": "pages/notice/notice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/site/businesstalk/businesstalk",
+					"pathName": "pages/site/businesstalk/businesstalk",
 					"query": "",
 					"scene": null
 				}

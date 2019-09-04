@@ -24,6 +24,15 @@ Page({
     wx.showLoading()
     this.getList(data)
   },
+  onShow:function(){
+    let data = {
+      session_key: wx.getStorageSync('session_key'),
+      limit: 15,
+      page: 1
+    }
+    wx.showLoading()
+    this.getList(data)
+  },
   getList: function (data){
     api.getMarketLists(data).then(res => {
       console.log(res.data.data.list)

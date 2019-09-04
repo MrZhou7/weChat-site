@@ -27,6 +27,20 @@ Page({
       })
     })
   },
+  onShow:function(){
+    let data = {
+      session_key: wx.getStorageSync('session_key'),
+      limit: 15,
+      page: 1
+    }
+    api.getAddviceLists(data).then(res => {
+      console.log(res.data.data.list)
+      res.data.data.list.length == 0 && wx.showToast({ title: '暂无信息', icon: 'none', duration: 1500 })
+      this.setData({
+        list: res.data.data.list
+      })
+    })
+  },
   addPage: function () {
     wx.navigateTo({
       url: '../addAdvice/addAdvice',

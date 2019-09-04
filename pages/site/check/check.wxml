@@ -1,5 +1,5 @@
 <!--pages/site/check/check.wxml-->
-<view>
+<view class="weui-cells weui-cells_after-title">
   <view class="weui-cell" wx:for="{{fileList}}" wx:key='item.id'>
       <view class="weui-cell__bd">
           <view class="weui-uploader">
@@ -9,7 +9,7 @@
                 </view>
               </view>
               <view class="weui-uploader__bd">
-                <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
                     <view class="weui-uploader__input" bindtap="chooseImage" data-id="{{item.id}}"></view>
                 </view>
                 <view class="weui-uploader__file" bindtap="previewImage" id="{{item.id}}">
@@ -25,11 +25,11 @@
           <view class="weui-uploader">
               <view class="weui-uploader__hd">
                 <view class="weui-uploader__overview">
-                    <view class="weui-uploader__title">晨巡问题照片<text class="small"> (1张)</text></view>
+                    <view class="weui-uploader__title">问题照片<text class="small"> (1张)</text></view>
                 </view>
               </view>
               <view class="weui-uploader__bd">
-                <view class="weui-uploader__input-box">
+                <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
                     <view class="weui-uploader__input" bindtap="chooseLogImage" data-index="{{i}}"></view>
                 </view>
                 <view class="weui-uploader__file" bindtap="previewLogImage" id="{{i}}">
@@ -39,20 +39,19 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells__title">晨巡问题问题说明:</view>
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-          <view class="weui-cell__bd">
-              <textarea class="weui-textarea" value='{{log[i].explain}}' bindinput="bindText" data-index="{{i}}" placeholder="请输入问题说明" auto-height />
-          </view>
-      </view>
-    </view>
-    <view class="handle">
-      <i-icon bindtap="add" type="add" size="50" color="#09BB07"/>
-      <i-icon bindtap="del" data-index="{{i}}" wx:if="{{log.length > 1}}" type="delete" size="50" color="red"/>
+  <view class="weui-cells__title">主要问题备注:</view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{log[i].explain}}' bindinput="bindText" placeholder="请输入主要问题备注" data-index="{{i}}" auto-height />
+        </view>
     </view>
   </view>
-  <view class="weui-btn-area">
-    <button class="weui-btn" type="primary" bindtap="submit"> 提 交 </button>
+  <view class="handle" wx:if="{{isBtn}}">
+    <i-icon bindtap="add" type="add" size="50" color="#09BB07"/>
+    <i-icon bindtap="del" data-index="{{i}}" wx:if="{{log.length > 1}}" type="delete" size="50" color="red"/>
   </view>
 </view>
+<view class="weui-btn-area">
+  <button class="weui-btn" type="primary" bindtap="submit" wx:if="{{isBtn}}"> 提 交 </button>
+</view>
+

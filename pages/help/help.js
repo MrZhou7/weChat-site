@@ -17,7 +17,8 @@ Page({
     files:'',
     pic:'',
     translateText:'',
-    emergency: false
+    emergency: false,
+    content: []
   },
 
   /**
@@ -30,6 +31,7 @@ Page({
     //有新的识别内容返回，则会调用此事件
     manager.onRecognize = (res) => {
       let text = res.result
+      console.log(text)
       this.setData({
         voice: text,
       })
@@ -46,8 +48,11 @@ Page({
         // 用户没有说话，可以做一下提示处理...
         return
       }
+      this.data.content.push(text);
+      let strNew = this.data.content.join('')
+      console.log(strNew)
       this.setData({
-        voice: text,
+        voice: strNew,
       })
       // 得到完整识别内容就可以去翻译了
       // this.translateTextAction()
@@ -76,13 +81,22 @@ Page({
   //     },
   //   })
   //  },
-
-  streamRecord: function () {
+  clearVoice: function(){ // 清空录音内容
+    this.setData({
+      voice: '',
+      content: []
+    })
+  },
+  streamRecord: function () { // 录音开始
+    wx.showLoading({
+      title: '录音中...',
+    })
     manager.start({
       lang: 'zh_CN',
     })
   },
-  endStreamRecord: function () {
+  endStreamRecord: function () { // 录音结束
+    wx.hideLoading()
     manager.stop()
   },
 

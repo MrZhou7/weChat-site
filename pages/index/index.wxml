@@ -2,7 +2,7 @@
 <view class="container">
   <view class="box" wx:for="{{list}}" wx:key="{{index}}" bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
     <view class="wrap">
-      <image src="{{item.bg}}"></image>
+      <image mode="widthFix" src="{{item.bg}}"></image>
     </view>
   </view>
 </view>

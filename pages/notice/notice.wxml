@@ -21,11 +21,13 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                   <view wx:for="{{rulsList}}" bindtap="getList" wx:key="{{index}}" data-index ='{{index}}' data-list='{{item.list}}'>
                     <view class="box"><view class="box_left">{{index + 1}}、{{item.name}}</view><image src="../../images/10.png"></image></view>
-                    <view class="weui-cells weui-cells_after-title {{isShow ? 'box_right' : 'box_bottom'}}" wx:for="{{item.list}}" catchtap="goDetail" wx:key="{{index}}" data-index ='{{index}}' data-id='{{item.id}}'>
+                    <view class="{{index == num ? 'box_right' : 'box_bottom'}}">
+                      <view class="weui-cells weui-cells_after-title" wx:for="{{item.list}}" catchtap="goDetail" wx:key="{{index}}" data-index ='{{index}}' data-id='{{item.id}}'>
                       <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                           <view class="weui-cell__bd">{{index + 1}}、{{item.title}}</view>
                           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                       </view>
+                    </view>
                     </view>
                   </view>
                 </view>

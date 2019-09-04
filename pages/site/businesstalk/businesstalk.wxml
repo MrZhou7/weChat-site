@@ -25,24 +25,24 @@
           <input class="weui-input" name='position' value='{{position}}' placeholder="请输入职位"/>
       </view>
     </view>
-    <view class="weui-cells__title">商户意见及建议:</view>
+  </view>
+    <view class="weui-cells__title">商户对商场意见及建议:</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
           <view class="weui-cell__bd">
-              <textarea class="weui-textarea wrap" name='advice' value='{{advice}}' auto-height placeholder="请输入意见及建议" />
+              <textarea class="weui-textarea wrap" name='advice' value='{{advice}}' auto-height placeholder="请输入商户对商场意见及建议" />
           </view>
       </view>
     </view>
-    <view class="weui-cells__title">予商户经营建议:</view>
+    <view class="weui-cells__title">予商户提升经营建议:</view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
           <view class="weui-cell__bd">
-              <textarea class="weui-textarea wrap" name='business_advice' value='{{business_advice}}' auto-height placeholder="请输入予商户经营建议" />
+              <textarea class="weui-textarea wrap" name='business_advice' value='{{business_advice}}' auto-height placeholder="请输入予商户提升经营建议" />
           </view>
       </view>
     </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+      <button class="weui-btn" type="primary" form-type="submit" wx:if="{{isBtn}}"> 提 交 </button>
     </view>
-  </view>
 </form>

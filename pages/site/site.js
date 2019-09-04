@@ -139,6 +139,7 @@ Page({
               }).then(res => {
                 const list = JSON.parse(res.data.data);
                 const num = list.stepInfoList.length - 1;
+                wx.removeStorageSync("runNum")
                 wx.setStorageSync("runNum", list.stepInfoList[num].step)
                 _this.setData({
                   stepNum: wx.getStorageSync("runNum")

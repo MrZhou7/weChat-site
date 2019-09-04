@@ -16,6 +16,9 @@
   padding-bottom: 30px;
 }
 .btn{
-  padding: 0px 5px;
+  padding: 0px 20rpx;
   font-size: 14px;
+}
+.button-sp-area{
+  flex: 1
 }

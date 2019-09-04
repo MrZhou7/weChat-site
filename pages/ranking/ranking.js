@@ -21,7 +21,9 @@ Page({
     wx.setNavigationBarTitle({
       title: options.name,
     })
-    this.setData({ type1: options.type1 })
+    this.setData({ 
+      type1: options.type1 
+    })
     let data = {
       session_key: wx.getStorageSync('session_key'),
       type1: this.data.type1,
@@ -59,6 +61,7 @@ Page({
 
   //获取排名信息
   getRanking:function(data){
+    wx.showLoading()
     api.ranking(data).then(res => {
       this.setData({
         country: res.data.data.country,

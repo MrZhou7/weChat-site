@@ -9,12 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    files: '',
+    files: [],
     business: '',
     pic:'',
     isSubmit: true,
     num: null,
-    id: null
+    id: null,
+    isBtn: true
   },
 
   /**
@@ -24,7 +25,14 @@ Page({
     wx.setNavigationBarTitle({
       title: options.name
     })
-    this.setData({ num: options.id })
+    if (App.globalData.date != '') {
+      this.setData({
+        isBtn: common.isToday(App.globalData.date)
+      })
+    }
+    this.setData({
+      num: options.id
+    })
     let _this = this;
     let centerInfo = {
       session_key: wx.getStorageSync('session_key'),
@@ -43,7 +51,7 @@ Page({
           const reqData = res.data.data;
           console.log(reqData)
           this.setData({
-            files: apiList.base + reqData.pic,
+            files: [apiList.base + reqData.pic],
             pic: reqData.pic,
             business: reqData.violations_customer,
             id: reqData.id,

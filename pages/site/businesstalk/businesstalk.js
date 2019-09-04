@@ -15,13 +15,19 @@ Page({
     advice: '', // 商户意见及建议
     business_advice: '', //商户经营建议
     isSubmit: true,
-    id: null
+    id: null,
+    isBtn: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (App.globalData.date != '') {
+      this.setData({
+        isBtn: common.isToday(App.globalData.date)
+      })
+    }
     this.initValidate();
     let _this = this;
     let centerInfo = {

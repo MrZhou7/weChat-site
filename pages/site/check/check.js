@@ -15,11 +15,12 @@ Page({
       { id: 3, name: "重点商户", files: '', pic: ''}
     ],
     log: [
-      { explain: '', files: '', pic:'' }
+      { explain: '', files: [], pic:'' }
     ],
     isSubmit: true,
     num: null,
-    id: null
+    id: null,
+    isBtn: true
   },
 
   /**
@@ -29,6 +30,12 @@ Page({
     wx.setNavigationBarTitle({
       title: options.name
     })
+    if (App.globalData.date != '') {
+      this.setData({
+        isBtn: common.isToday(App.globalData.date)
+      })
+    }
+    
     this.setData({ num: options.id })
     let _this = this;
     let centerInfo = {
@@ -50,18 +57,18 @@ Page({
             if (logList[i].pic == '') {
               logList[i].pic = logList[i].pic,
               logList[i].explain = logList[i].problem
-              logList[i].files = ''
+              logList[i].files = []
             } else {
-              logList[i].files = apiList.base + logList[i].pic,
+              logList[i].files = [apiList.base + logList[i].pic],
               logList[i].pic = logList[i].pic,
               logList[i].explain = logList[i].problem
             }
           }
           this.setData({
             fileList:[
-              { id: 1, name: "主通道", files: apiList.base + reqData.channel_pic, pic: reqData.channel_pic },
-              { id: 2, name: "卫生间", files: apiList.base + reqData.toilet_pic, pic: reqData.toilet_pic },
-              { id: 3, name: "重点商户", files: apiList.base + reqData.focus_pic, pic: reqData.focus_pic }
+              { id: 1, name: "主通道", files: [apiList.base + reqData.channel_pic], pic: reqData.channel_pic },
+              { id: 2, name: "卫生间", files: [apiList.base + reqData.toilet_pic], pic: reqData.toilet_pic },
+              { id: 3, name: "重点商户", files: [apiList.base + reqData.focus_pic], pic: reqData.focus_pic }
             ],
             log:logList,
             id: reqData.id,

@@ -13,7 +13,7 @@
                 <view hidden="{{activeIndex != 0}}">
                   <view class="weui-cells weui-cells_after-title" wx:for="{{helpList}}" bindtap="goDetail" wx:key="{{index}}" data-index ='{{index}}' data-id='1'>
                     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                        <view class="weui-cell__bd">{{index + 1}}、 {{item.floor}}(楼层) {{item.problem}}(问题) {{item.create_name}}(提报人)</view>
+                        <view class="weui-cell__bd">{{index + 1}}、 {{item.floor}}(楼层)  {{item.create_name}}(提报人)  {{item.problem}}(问题) </view>
                         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
                     </view>
                   </view>

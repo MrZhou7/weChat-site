@@ -104,14 +104,15 @@ function chooseImage(_this, files, pic) {  // 拍照显示上传
           type:'jpg'
         },
         success: function (res) {
-          console.log(res)
           var data = JSON.parse(res.data) // 打他获取的是一个字符串要转化
           if (data.code == 0) {
             _this.setData({
               pic: data.data
             })
-            console.log(_this.data)
           }
+        },
+        fail:function(){
+          
         }
       })
     }
@@ -147,6 +148,44 @@ function chooseImageByArrey(_this, files, pic) {  // 拍照显示上传(数组�
             _this.setData({
               [pic]: data.data
             })
+            console.log(_this.data)
+          }
+        }
+      })
+    }
+  })
+}
+
+function chooseImageByPhoto(_this, files, pic) {  // 拍照显示上传(数组循环)
+  wx.chooseImage({
+    count: 1,// 默认9
+    sizeType: ['compressed'], // 可以指定是原图还是压缩图
+    sourceType: ['camera','album'],// 可以指定来源是相册还是相机
+    success: function (res) {
+      _this.setData({
+        [files]: res.tempFilePaths
+      })
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      var tempFilePaths = res.tempFilePaths;
+      //这里是上传操作
+      wx.uploadFile({
+        url: apiList.addPic, //里面填写你的上传图片服务器API接口的路径 
+        filePath: tempFilePaths[0],//要上传文件资源的路径 String类型 
+        name: 'image',//按个人情况修改，文件对应的 key,开发者在服务器端通过这个 key 可以获取到文件二进制内容，(后台接口规定的关于图片的请求参数)
+        header: {
+          "Content-Type": "multipart/form-data"//记得设置
+        },
+        formData: {
+          session_key: wx.getStorageSync('session_key'),
+          type: 'jpg'
+        },
+        success: function (res) {
+          var data = JSON.parse(res.data) // 打他获取的是一个字符串要转化
+          if (data.code == 0) {
+            _this.setData({
+              [pic]: data.data
+            })
+            console.log(_this.data)
           }
         }
       })
@@ -159,6 +198,8 @@ module.exports = {
   alertMsg: alertMsg,
   chooseImage: chooseImage,
   chooseImageByArrey: chooseImageByArrey,
+  chooseImageByPhoto: chooseImageByPhoto,
   userCenterInfo: userCenterInfo,
-  itemBack: itemBack
+  itemBack: itemBack,
+  isToday: isToday
 };
