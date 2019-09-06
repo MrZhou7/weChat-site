@@ -24,3 +24,32 @@ page{
   margin: 0 1% 10px;
   color: #3F3F3F;
 }
+.scroll_view_box{
+  color: #f76a24;
+  background:#fefcec;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  display: flex;
+}
+.srcoll_view{
+  animation:myfirst 10s linear infinite;
+}
+.srcoll-box{
+  position: relative;
+  flex: 1;
+  margin: 0 30rpx 0 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@keyframes myfirst
+{
+  0% {margin-left:750rpx;}
+  100% {margin-left:-750rpx;}
+}
+.horn{
+  margin-left: 30rpx;
+  line-height: 72rpx;
+  align-items: center;
+}

@@ -66,16 +66,15 @@ Page({
       console.log(articleList)
       if (articleList.length == 0) {
         this.setData({
-          noticeList: '永远从零开始，永远力争第一'
+          noticeList: '忙碌和紧张，能带来高昂的工作情绪；只有全神贯注时，工作才能产生高效率。——松下幸之助'
         })
       } else {
-        const noticeData = [];
-        for (var i = 0; i < articleList.length;i++) {
-          noticeData.push(articleList[i].title)
+        const list = []
+        for (var i = 0; i < articleList.length;i++ ){
+          list.push(articleList[i].title)
         }
-        const list = noticeData.join('; ')
         this.setData({
-          noticeList: list
+          noticeList: list.join("; ")
         })
       }
     })

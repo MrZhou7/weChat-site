@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "i-notice-bar": "../../components/dist/notice-bar/index"
+    "i-icon": "../../components/dist/icon/index"
   }
 }

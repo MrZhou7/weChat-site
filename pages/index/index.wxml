@@ -1,8 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <i-notice-bar icon="systemprompt" loop bindtap="goDetail">
-    {{noticeList}}
-  </i-notice-bar>
+  <view class='scroll_view_box' loop bindtap="goDetail">
+    <i-icon type="systemprompt" size="24" color="#f76a24" class="horn"></i-icon>
+    <view class="srcoll-box">
+      <view class="srcoll_view">{{noticeList}}</view>
+    </view>
+  </view>
   <view class="box" wx:for="{{list}}" wx:key="{{index}}" bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
     <view class="wrap">
       <image mode="widthFix" src="{{item.bg}}"></image>
