@@ -17,16 +17,23 @@ Page({
     lightspot: '',
     morrow: '',
     work: 1,
-    isShow: true
+    isShow: true,
+    isBtn: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (App.globalData.date != '') {
+      this.setData({
+        isBtn: common.isToday(App.globalData.date)
+      })
+    }
     this.initValidate();
     api.getRecordDetail({
-      session_key: wx.getStorageSync('session_key')
+      session_key: wx.getStorageSync('session_key'),
+      date: App.globalData.date
     }).then(res => {
       const reqData = res.data.data;
       console.log(reqData)
@@ -35,11 +42,11 @@ Page({
           coustmer_name: reqData.coustmer_name,
           reasons: reqData.reasons,
           money: reqData.money,
-          status: this.isTrue(reqData.status),
+          status: reqData.status,
           important: reqData.important,
           lightspot: reqData.lightspot,
           morrow: reqData.morrow,
-          work: this.isTrue(reqData.reasons),
+          work: reqData.work,
           isShow: false
         })
       }
@@ -105,13 +112,13 @@ Page({
   // //是否缴纳
   switch1Change: function (e) {
     this.setData({
-      status: isNumber(e.detail.value)
+      status: this.isNumber(e.detail.value)
     })
   },
   // //是否上班
   switch2Change: function (e) {
     this.setData({
-      work: isNumber(e.detail.value)
+      work: this.isNumber(e.detail.value)
     })
   },
 

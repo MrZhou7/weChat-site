@@ -21,7 +21,6 @@ Page({
       limit: this.data.limit,
       page: this.data.page
     }
-    wx.showLoading()
     this.getList(data)
   },
   onShow:function(){
@@ -30,10 +29,10 @@ Page({
       limit: 15,
       page: 1
     }
-    wx.showLoading()
     this.getList(data)
   },
   getList: function (data){
+    wx.showLoading()
     api.getMarketLists(data).then(res => {
       console.log(res.data.data.list)
       res.data.data.list.length == 0 && wx.showToast({ title: '暂无信息', icon: 'none', duration: 1500 })
@@ -56,7 +55,6 @@ Page({
     })
   },
   onReachBottom: function () {
-    wx.showLoading()
     let data = {
       session_key: wx.getStorageSync('session_key'),
       limit: this.data.limit,

@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-notice-bar": "../../components/dist/notice-bar/index"
+  }
 }

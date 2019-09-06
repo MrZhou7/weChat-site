@@ -1,11 +1,15 @@
 <!--index.wxml-->
 <view class="container">
+  <i-notice-bar icon="systemprompt" loop bindtap="goDetail">
+    {{noticeList}}
+  </i-notice-bar>
   <view class="box" wx:for="{{list}}" wx:key="{{index}}" bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
     <view class="wrap">
       <image mode="widthFix" src="{{item.bg}}"></image>
     </view>
   </view>
 </view>
+
 <view bindtap="getCenter" data-id="{{center.id}}" data-text="{{center.text}}" class="wrapBottom">
   {{center.text}}
 </view>

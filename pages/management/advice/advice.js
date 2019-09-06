@@ -19,13 +19,7 @@ Page({
       limit: 15,
       page: 1
     }
-    api.getAddviceLists(data).then(res => {
-      console.log(res.data.data.list)
-      res.data.data.list.length == 0 && wx.showToast({ title: '暂无信息', icon: 'none', duration: 1500 })
-      that.setData({
-        list: res.data.data.list
-      })
-    })
+    this.getAddviceLists(data)
   },
   onShow:function(){
     let data = {
@@ -33,9 +27,14 @@ Page({
       limit: 15,
       page: 1
     }
+    this.getAddviceLists(data)
+  },
+  getAddviceLists: function (data){
+    wx.showLoading()
     api.getAddviceLists(data).then(res => {
       console.log(res.data.data.list)
       res.data.data.list.length == 0 && wx.showToast({ title: '暂无信息', icon: 'none', duration: 1500 })
+      this.data.page++
       this.setData({
         list: res.data.data.list
       })
@@ -52,5 +51,13 @@ Page({
     wx.navigateTo({
       url: '../addAdvice/addAdvice?id=' + id,
     })
+  },
+  onReachBottom: function () { // 下拉
+    let data = {
+      session_key: wx.getStorageSync('session_key'),
+      limit: this.data.limit,
+      page: this.data.page
+    }
+    this.getAddviceLists(data)
   }
 })

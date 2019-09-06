@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: "",
+    date: '',
+    endTime:'',
     area: [],
     area_id: null,
     areaIndex: 0,
@@ -28,6 +29,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      date: App.globalData.date,
+      endTime: common.getDate()
+    })
     var that = this;
     api.getInfo({ session_key: wx.getStorageSync('session_key') }).then(res => {
       let dataList = res.data.data;

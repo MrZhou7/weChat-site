@@ -38,6 +38,7 @@ Page({
         problem: detail.problem,
         voice: detail.voice,
         problem_pic: [baseUrl + detail.problem_pic],
+        pic: detail.solve_pic,
         files: [baseUrl + detail.solve_pic],
         id: options.id,
         improvement: detail.improvement,

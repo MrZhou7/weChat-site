@@ -49,12 +49,43 @@ Page({
     center: {
       id: '9',
       text: '个人中心'
-    }
+    },
+    noticeList: ''
   },
   onLoad: function (options) {
-    
+    this.getNoticeList()
   },
-  getCenter: function(e){
+  getNoticeList: function () { //获取公告列表
+    let data = {
+      session_key: wx.getStorageSync('session_key'),
+      column: 1
+    }
+    wx.showLoading()
+    api.getNoticeList(data).then(res => {
+      let articleList = res.data.data;
+      console.log(articleList)
+      if (articleList.length == 0) {
+        this.setData({
+          noticeList: '永远从零开始，永远力争第一'
+        })
+      } else {
+        const noticeData = [];
+        for (var i = 0; i < articleList.length;i++) {
+          noticeData.push(articleList[i].title)
+        }
+        const list = noticeData.join('; ')
+        this.setData({
+          noticeList: list
+        })
+      }
+    })
+  },
+  goDetail:function(){ // 跳转公告
+    wx.navigateTo({
+      url: '../notice/notice?id=6&name=查看公告'
+    });
+  },
+  getCenter: function(e){ // 跳转个人中心
     let name = e.currentTarget.dataset.text;
     let num = e.currentTarget.dataset.id;
     wx.navigateTo({

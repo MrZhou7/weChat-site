@@ -31,7 +31,7 @@
     <view class="weui-cell weui-cell_switch">
       <view class="weui-cell__bd title">是否缴纳:</view>
       <view class="weui-cell__ft">
-          <switch checked bindchange="switch1Change" />
+          <switch checked="{{status == 1}}" bindchange="switch1Change" />
       </view>
     </view>
   </view>
@@ -55,7 +55,7 @@
     <view class="weui-cell weui-cell_switch">
         <view class="weui-cell__bd title">明日是否正常上班:</view>
         <view class="weui-cell__ft">
-            <switch checked bindchange="switch2Change"/>
+            <switch checked="{{work == 1}}" bindchange="switch2Change"/>
         </view>
       </view>
   </view>
@@ -68,6 +68,6 @@
     </view>
   </view>
   <view class="weui-btn-area" wx:if="{{isShow}}">
-      <button class="weui-btn" type="primary" form-type="submit"> 提 交 </button>
+      <button class="weui-btn" type="primary" form-type="submit" wx:if="{{isBtn}}"> 提 交 </button>
   </view>
 </form>

@@ -61,6 +61,7 @@ Page({
       session_key: wx.getStorageSync('session_key'),
       date: App.globalData.date
     }
+    wx.showLoading()
     api.getCenterInfo(centerInfo).then(res => {
       let colorNumData = res.data.data;
       console.log(colorNumData)

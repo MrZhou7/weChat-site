@@ -5,7 +5,7 @@
         <view class="weui-label">选择日期</view>
     </view>
     <view class="weui-cell__bd">
-        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}" end="{{endTime}}" bindchange="bindDateChange">
             <view class="weui-input">{{date}}</view>
         </picker>
     </view>
