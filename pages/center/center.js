@@ -104,7 +104,7 @@ Page({
       this.setData({
         mallIndex: e.detail.value,
         mall_id: this.data.mallList[e.detail.value].id,
-        areaName: this.data.mallList[e.detail.value].subcompanyname,
+        mallName: this.data.mallList[e.detail.value].subcompanyname,
       })
     }
   },

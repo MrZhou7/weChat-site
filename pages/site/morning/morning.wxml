@@ -25,7 +25,7 @@
           <view class="weui-label">应到人数</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='should_num' value='{{should_num}}' placeholder="请输入应到人数"/>
+          <input class="weui-input" name='beNum' value='{{beNum}}' placeholder="请输入应到人数"/>
       </view>
     </view>
     <view class="weui-cell ">
@@ -33,7 +33,7 @@
           <view class="weui-label">实到人数</view>
       </view>
       <view class="weui-cell__bd">
-          <input class="weui-input" name='arrived_num' value='{{arrived_num}}' placeholder="请输入实到人数"/>
+          <input class="weui-input" name='actualNum' value='{{actualNum}}' placeholder="请输入实到人数"/>
       </view>
     </view>
   </view>
