@@ -1,0 +1,62 @@
+<!--pages/siteView/morningView/morningView.wxml-->
+<view class="weui-btn-bottom">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <view class="weui-uploader">
+                <view class="weui-uploader__hd">
+                  <view class="weui-uploader__overview">
+                      <view class="weui-uploader__title">微笑合影 <text class="small"> (1张)</text></view>
+                  </view>
+                </view>
+                <view class="weui-uploader__bd">
+                    <view class="weui-uploader__file" bindtap="previewImage" id="0">
+                      <image class="weui-uploader__img" src="{{files}}" mode="aspecFill"/>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">应到人数</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='beNum' value='{{beNum}}' placeholder="请输入应到人数"/>
+      </view>
+    </view>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd">
+          <view class="weui-label">实到人数</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" name='actualNum' value='{{actualNum}}' placeholder="请输入实到人数"/>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">请假商户名:</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{leaveBusiness}}' bindinput="busInput" auto-height placeholder="请输入请假商户名"/>
+        </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">无故缺席商户名:</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{absent}}' bindinput="absentInput" auto-height placeholder="请输入无故缺席商户名"/>
+        </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">工装不整商户名:</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value='{{frock}}' bindinput="frockInput" auto-height placeholder="请输入工装不整商户名"/>
+        </view>
+    </view>
+  </view>
+</view>
+

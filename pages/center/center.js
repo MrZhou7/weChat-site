@@ -100,7 +100,7 @@ Page({
   // 选择门店
   bindMallChange: function (e) {
     console.log(e)
-    if (this.data.bmsx == 0 || this.data.bmsx == 1){
+    if (this.data.mallList.length > 0 && this.data.bmsx == 0 || this.data.bmsx == 1){
       this.setData({
         mallIndex: e.detail.value,
         mall_id: this.data.mallList[e.detail.value].id,

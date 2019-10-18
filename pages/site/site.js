@@ -54,7 +54,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(App.globalData)
     var that = this;
     this.getRunNum(this);
     let centerInfo = {
@@ -64,7 +63,6 @@ Page({
     wx.showLoading()
     api.getCenterInfo(centerInfo).then(res => {
       let colorNumData = res.data.data;
-      console.log(colorNumData)
       let morning = "list[0].isShow";
       let welcome = "list[1].isShow";
       let morning_tour = "list[2].isShow";

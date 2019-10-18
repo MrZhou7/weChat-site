@@ -19,7 +19,18 @@
     "pages/management/addMarket/addMarket",
     "pages/management/advice/advice",
     "pages/management/addAdvice/addAdvice",
-    "pages/center/center"
+    "pages/center/center",
+    "pages/monitoring/monitoring",
+    "pages/siteView/siteView",
+    "pages/siteView/morningView/morningView",
+    "pages/siteView/meetingView/meetingView",
+    "pages/siteView/checkView/checkView",
+    "pages/siteView/businessView/businessView",
+    "pages/siteView/logView/logView",
+    "pages/siteView/adviceView/adviceView",
+    "pages/siteView/marketView/marketView",
+    "pages/siteView/adviceDetail/adviceDetail",
+    "pages/siteView/marketDetail/marketDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

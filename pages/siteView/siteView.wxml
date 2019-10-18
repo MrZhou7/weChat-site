@@ -1,0 +1,7 @@
+<!--pages/siteView/siteView.wxml-->
+<view class="content">
+  <view wx:for="{{list}}" style="background:{{item.color}}" wx:key="{{index}}" class='list' bindtap="getInto" data-id="{{item.id}}" data-text="{{item.text}}">
+    <view class="iconfont {{item.icon}}"></view>
+    <view>{{item.text}}</view>
+  </view>
+</view>

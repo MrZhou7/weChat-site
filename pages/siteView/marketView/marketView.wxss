@@ -1,0 +1,13 @@
+/* pages/siteView/marketView/marketView.wxss */
+.weui-tab__content{
+    padding-top: 60px;
+    text-align: center;
+}
+.weui-cell__bd text{
+  padding-left: 36rpx;
+}
+.weui-cell__bd {
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+}

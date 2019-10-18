@@ -40,12 +40,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 10,
+			"current": 13,
 			"list": [
 				{
-					"id": -1,
-					"name": "pages/site/site",
-					"pathName": "pages/site/site",
+					"id": 0,
+					"name": "pages/siteView/siteView",
+					"pathName": "pages/siteView/siteView",
 					"query": "",
 					"scene": null
 				},
@@ -116,6 +116,27 @@
 					"id": -1,
 					"name": "pages/site/businesstalk/businesstalk",
 					"pathName": "pages/site/businesstalk/businesstalk",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/siteView/siteView",
+					"pathName": "pages/siteView/siteView",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "pages/siteView/adviceView/adviceView",
+					"pathName": "pages/siteView/adviceView/adviceView",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				}

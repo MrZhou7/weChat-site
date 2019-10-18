@@ -1,0 +1,7 @@
+<!--pages/siteView/marketView/marketView.wxml-->
+<view class="weui-cells weui-cells_after-title" wx:for="{{list}}" bindtap="goDetail" wx:key="{{index}}" data-index ='{{index}}'>
+    <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{index + 1}}、 {{item.project_name}}(项目名称) {{item.developer}}(开发商) {{item.level}}(档次定位)</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+</view>

@@ -50,11 +50,25 @@ Page({
       id: '9',
       text: '个人中心'
     },
-    noticeList: ''
+    monitoring: {
+      id: '10',
+      text: '线上监控'
+    },
+    noticeList: '',
+    isShow: false
   },
+
   onLoad: function (options) {
     this.getNoticeList()
+    this.getShow()
   },
+  getShow() { // 获取用户角色权限
+    api.getUserRoleByOa({ session_key: wx.getStorageSync('session_key') }).then(res => {
+      let articleList = res.data.data;
+      articleList.role > 0 && this.setData({ isShow: true }) 
+    })
+  },
+
   getNoticeList: function () { //获取公告列表
     let data = {
       session_key: wx.getStorageSync('session_key'),
@@ -63,7 +77,6 @@ Page({
     wx.showLoading()
     api.getNoticeList(data).then(res => {
       let articleList = res.data.data;
-      console.log(articleList)
       if (articleList.length == 0) {
         this.setData({
           noticeList: '忙碌和紧张，能带来高昂的工作情绪；只有全神贯注时，工作才能产生高效率。——松下幸之助'
@@ -84,14 +97,21 @@ Page({
       url: '../notice/notice?id=6&name=查看公告'
     });
   },
-  getCenter: function(e){ // 跳转个人中心
+  goCenter: function(e){ // 跳转个人中心
     let name = e.currentTarget.dataset.text;
     let num = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../center/center?id=' + num + '&name=' + name,
     });
   },
-  getInto: function(e) {
+  goMonitoring: function (e) { // 跳转线上监控
+    let name = e.currentTarget.dataset.text;
+    let num = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../monitoring/monitoring?id=' + num + '&name=' + name,
+    });
+  },
+  goInto: function(e) {
     var that = this;
     let name = e.currentTarget.dataset.text;
     let num = e.currentTarget.dataset.id;

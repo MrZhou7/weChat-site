@@ -11,7 +11,7 @@ Page({
    */
   data: {
     floor: '',
-    help_area: "",
+    // help_area: "",
     problem:'',
     problem_pic: [],
     voice: '',
@@ -34,7 +34,7 @@ Page({
       console.log(detail)
       this.setData({
         floor: detail.floor,
-        help_area: detail.help_area,
+        // help_area: detail.help_area,
         problem: detail.problem,
         voice: detail.voice,
         problem_pic: [baseUrl + detail.problem_pic],
@@ -68,11 +68,11 @@ Page({
   },
 
   //绑定区域
-  areaInput: function (e) {
-    this.setData({
-      help_area: e.detail.value
-    })
-  },
+  // areaInput: function (e) {
+  //   this.setData({
+  //     help_area: e.detail.value
+  //   })
+  // },
 
   //绑定问题说明
   problemInput: function (e) {

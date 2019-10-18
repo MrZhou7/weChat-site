@@ -1,0 +1,10 @@
+/* pages/siteView/logView/logView.wxss */
+.weui-btn-bottom{
+  padding-bottom: 30px;
+}
+.footBottom{
+  padding-bottom: 10px;
+}
+.title{
+  font-size: 14px;
+}

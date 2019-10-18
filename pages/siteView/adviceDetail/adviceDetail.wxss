@@ -1,0 +1,4 @@
+/* pages/siteView/adviceDetail/adviceDetail.wxss */
+.weui-textarea{
+  min-height: 200px;  
+}

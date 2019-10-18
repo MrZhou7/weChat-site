@@ -1,0 +1,7 @@
+<!--pages/siteView/adviceView/adviceView.wxml-->
+<view class="weui-cells weui-cells_after-title" wx:for="{{list}}" bindtap="goDetail" wx:key="{{index}}" data-index ='{{index}}'>
+    <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{index + 1}}、 {{item.advice}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+</view>

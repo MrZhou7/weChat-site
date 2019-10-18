@@ -215,7 +215,60 @@ let getRuleList = (data) => {
     resolve(apiRequest(apiList.getRuleList, 'post', data))
   })
 }
+//获取人员信息
+let getUser = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getUserList, 'post', data))
+  })
+}
 
+//监控我在现场的详情
+let getviewDetail = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getInterviewDetail, 'post', data))
+  })
+}
+//监控事项记录详情
+let getMatterDetail = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getMatterRecordDetail, 'post', data))
+  })
+}
+
+//监控市调对标-获取列表
+let getMarkets = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getMarkets, 'post', data))
+  })
+}
+
+// 监控市调对标-获取详情
+let getMarketDetails = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getMarketDetails, 'post', data))
+  })
+}
+
+//监控运营建议列表
+let getAdviceLists = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getAdviceLists, 'post', data))
+  })
+}
+
+//监控运营建议详情
+let getAdviceDetail = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getAdviceDetail, 'post', data))
+  })
+}
+
+//获取用户角色权限
+let getUserRoleByOa = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getUserRoleByOa, 'post', data))
+  })
+}
 
 //最后需要将具体调用的函数暴露出，给具体业务调用
 
@@ -247,5 +300,13 @@ export default {
   addAddvice: addAddvice,
   getNoticeList: getNoticeList,
   getArticleInfo: getArticleInfo,
-  getRuleList: getRuleList
+  getRuleList: getRuleList,
+  getUser: getUser,
+  getviewDetail: getviewDetail,
+  getMatterDetail: getMatterDetail,
+  getMarkets: getMarkets,
+  getMarketDetails: getMarketDetails,
+  getAdviceLists: getAdviceLists,
+  getAdviceDetail: getAdviceDetail,
+  getUserRoleByOa: getUserRoleByOa
 }

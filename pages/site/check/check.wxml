@@ -1,49 +1,49 @@
 <!--pages/site/check/check.wxml-->
 <view class="weui-cells weui-cells_after-title">
   <view class="weui-cell" wx:for="{{fileList}}" wx:key='item.id'>
-      <view class="weui-cell__bd">
-          <view class="weui-uploader">
-              <view class="weui-uploader__hd">
-                <view class="weui-uploader__overview">
-                    <view class="weui-uploader__title">{{item.name}}照片<text class="small"> (1张)</text></view>
-                </view>
-              </view>
-              <view class="weui-uploader__bd">
-                <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
-                    <view class="weui-uploader__input" bindtap="chooseImage" data-id="{{item.id}}"></view>
-                </view>
-                <view class="weui-uploader__file" bindtap="previewImage" id="{{item.id}}">
-                  <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
-                </view>
-            </view>
+    <view class="weui-cell__bd">
+      <view class="weui-uploader">
+        <view class="weui-uploader__hd">
+          <view class="weui-uploader__overview">
+            <view class="weui-uploader__title">{{item.name}}照片<text class="small"> (1张)</text></view>
+          </view>
         </view>
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
+            <view class="weui-uploader__input" bindtap="chooseImage" data-id="{{item.id}}"></view>
+          </view>
+          <view class="weui-uploader__file" bindtap="previewImage" id="{{item.id}}">
+            <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
   <view wx:for="{{log}}" wx:key="item" wx:for-index='i' class="wrap">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-          <view class="weui-uploader">
-              <view class="weui-uploader__hd">
-                <view class="weui-uploader__overview">
-                    <view class="weui-uploader__title">问题照片<text class="small"> (1张)</text></view>
-                </view>
-              </view>
-              <view class="weui-uploader__bd">
-                <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
-                    <view class="weui-uploader__input" bindtap="chooseLogImage" data-index="{{i}}"></view>
-                </view>
-                <view class="weui-uploader__file" bindtap="previewLogImage" id="{{i}}">
-                  <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
-                </view>
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+              <view class="weui-uploader__title">问题照片<text class="small"> (1张)</text></view>
             </view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
+              <view class="weui-uploader__input" bindtap="chooseLogImage" data-index="{{i}}"></view>
+            </view>
+            <view class="weui-uploader__file" bindtap="previewLogImage" id="{{i}}">
+              <image class="weui-uploader__img" src="{{item.files}}" mode="aspecFill"/>
+            </view>
+          </view>
         </view>
       </view>
     </view>
-  <view class="weui-cells__title">主要问题备注:</view>
+    <view class="weui-cells__title">主要问题备注:</view>
     <view class="weui-cell">
-        <view class="weui-cell__bd">
-            <textarea class="weui-textarea" value='{{log[i].explain}}' bindinput="bindText" placeholder="请输入主要问题备注" data-index="{{i}}" auto-height />
-        </view>
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" value='{{log[i].explain}}' bindinput="bindText" placeholder="请输入主要问题备注" data-index="{{i}}" auto-height />
+      </view>
     </view>
   </view>
   <view class="handle" wx:if="{{isBtn}}">
@@ -52,6 +52,6 @@
   </view>
 </view>
 <view class="weui-btn-area">
-  <button class="weui-btn" type="primary" bindtap="submit" wx:if="{{isBtn}}"> 提 交 </button>
+  <button class="weui-btn" disabled="{{isConfirm}}" type="primary" bindtap="submit" wx:if="{{isBtn}}"> 提 交 </button>
 </view>
 

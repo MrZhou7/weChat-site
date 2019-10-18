@@ -31,6 +31,14 @@ const config = {
   "getNoticeList": baseUrl + "Article/getNoticeList", // 获取公告列表
   "getRuleList": baseUrl + "Article/getRuleList", // 获取制度列表
   "getArticleInfo": baseUrl + "Article/getInfo", // 获取文章详情
+  "getUserList": baseUrl + "User/getUserListByMallId", // 获取员工信息
+  "getInterviewDetail": baseUrl + "Monitoring/getInterviewDetail", // 监控我在现场的详情
+  "getMatterRecordDetail": baseUrl + "Monitoring/getMatterRecordDetail", // 监控事项记录详情
+  "getMarkets": baseUrl + "Monitoring/getMarketLists", // 监控市调对标-获取列表
+  "getMarketDetails": baseUrl + "Monitoring/getMarketDetail", // 监控市调对标-获取详情
+  "getAdviceLists": baseUrl + "Monitoring/getAdviceLists", // 监控运营建议列表
+  "getAdviceDetail": baseUrl + "Monitoring/getAdviceDetail", // 监控运营建议详情
+  "getUserRoleByOa": baseUrl + "User/getUserRoleByOa", // 获取用户角色权限
 }; 
 
 module.exports = config;

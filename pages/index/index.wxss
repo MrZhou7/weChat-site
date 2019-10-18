@@ -16,10 +16,18 @@ page{
 .wrap image{
   width: 100%;
 }
-.wrapBottom{
-  line-height: 200rpx;
+.wrapTop{
+  line-height: 140rpx;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
+  background-color: #C6C4C5;
+  margin: 0 1% 5px;
+  color: #3F3F3F;
+}
+.wrapBottom{
+  line-height: 140rpx;
+  text-align: center;
+  font-size: 22px;
   background-color: #C6C4C5;
   margin: 0 1% 10px;
   color: #3F3F3F;

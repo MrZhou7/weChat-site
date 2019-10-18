@@ -5,23 +5,23 @@
         <view class="weui-label">楼层</view>
     </view>
     <view class="weui-cell__bd">
-        <input class="weui-input" value='{{floor}}' bindinput="floorInput" placeholder="请输入楼层"/>
+        <input class="weui-input" value='{{floor}}' bindinput="floorInput"/>
     </view>
   </view>
-  <view class="weui-cell ">
+  <!-- <view class="weui-cell ">
     <view class="weui-cell__hd">
         <view class="weui-label">区域</view>
     </view>
     <view class="weui-cell__bd">
       <textarea class="weui-textarea" value='{{help_area}}' bindinput="areaInput" placeholder="填写问题出现区域" auto-height />
     </view>
-  </view>
+  </view> -->
   <view class="weui-cell">
     <view class="weui-cell__hd">
-        <view class="weui-label">问题说明</view>
+        <view class="weui-label">问题类别</view>
     </view>
     <view class="weui-cell__bd">
-        <textarea class="weui-textarea" value='{{problem}}' bindinput="problemInput" placeholder="请填写问题情况" auto-height />
+        <textarea class="weui-textarea" value='{{problem}}' bindinput="problemInput" auto-height />
     </view>
   </view>
   <!-- <view class="weui-cell">
@@ -31,10 +31,10 @@
   </view> -->
   <view class="weui-cell ">
     <view class="weui-cell__hd">
-        <view class="weui-label">语音内容</view>
+        <view class="weui-label">问题内容</view>
     </view>
     <view class="weui-cell__bd">
-        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音说明翻译内容" auto-height />
+        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="问题描述" auto-height />
     </view>
   </view>
   <view class="weui-cell">

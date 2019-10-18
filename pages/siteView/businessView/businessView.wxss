@@ -1,0 +1,4 @@
+/* pages/siteView/businessView/businessView.wxss */
+.weui-btn-bottom{
+  padding-bottom: 30px;
+}

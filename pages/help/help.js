@@ -10,15 +10,17 @@ Page({
    */
   data: {
     floor: '',
-    help_area: "",
-    problem:'',
+    // help_area: "",
+    problem: "商管类",
     problem_pic:'',
     voice:'',
     files:'',
     pic:'',
     translateText:'',
     emergency: false,
-    content: []
+    content: [],
+    problems: ["商管类","客服类","招商类","企划营销类","物管类"],
+    problemIndex: 0
   },
 
   /**
@@ -127,12 +129,12 @@ Page({
     })
   },
 
-  //绑定区域
-  areaInput: function (e) {
-    this.setData({
-      help_area: e.detail.value
-    })
-  },
+  // //绑定区域
+  // areaInput: function (e) {
+  //   this.setData({
+  //     help_area: e.detail.value
+  //   })
+  // },
   //绑定声音说明
   voiceInput: function (e) {
     this.setData({
@@ -143,7 +145,8 @@ Page({
   //绑定问题说明
   problemInput: function (e) {
     this.setData({
-      problem: e.detail.value
+      problemIndex: e.detail.value,
+      problem: this.data.problems[e.detail.value]
     })
   },
 
@@ -159,7 +162,7 @@ Page({
       let data = {
         session_key: wx.getStorageSync('session_key'),
         floor: this.data.floor,
-        help_area: this.data.help_area,
+        // help_area: this.data.help_area,
         problem: this.data.problem,
         problem_pic: this.data.pic,
         voice: this.data.voice,

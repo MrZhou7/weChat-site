@@ -20,7 +20,8 @@ Page({
     isSubmit: true,
     num: null,
     id: null,
-    isBtn: true
+    isBtn: true,
+    isConfirm: true // 是否能提交
   },
 
   /**
@@ -37,6 +38,10 @@ Page({
     }
     
     this.setData({ num: options.id })
+
+    options.id == 3 ? this.setData({ isConfirm: this.isMorning() }) : this.setData({ isConfirm: this.isNoom() })
+    console.log(this.data)
+
     let _this = this;
     let centerInfo = {
       session_key: wx.getStorageSync('session_key'),
@@ -122,23 +127,24 @@ Page({
   },
   del: function (e) { // 删除
     var _this = this;
-    var index = e.currentTarget.dataset.index
+    // var index = e.currentTarget.dataset.index
     wx.showModal({
       title: '',
-      content: '是否真的要删除',
+      content: '确定要删除?',
       confirmColor: '#3491f0',
       success: function (res) {
       if (res.confirm) {
         var delLog = _this.data.log;
-        delLog.splice(index, 1);　
+        delLog.pop();　
         _this.setData({
-          log: delLog//重新赋值
+          log: delLog // 重新赋值
           })
         }
       }
     })
   },
   submit: function (e) {
+    console.log(this.data)
     var that = this;
     if (that.data.fileList[0].files == '') {
       common.alertMsg('请拍照上传主通道照片')
@@ -204,5 +210,29 @@ Page({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.log[index].files // 需要预览的图片http链接列表
     })
+  },
+  isMorning:function () { // 晨巡时间
+    var myDate = new Date()
+    var h = myDate.getHours();
+    var m = myDate.getMinutes();
+    if (h >= 9 && m >= 30 && h < 10) {
+      return false
+    } else if (h >= 10 && h <= 12) {
+      return false
+    } else {
+      return true
+    }
+  },
+  isNoom:function() { // 午巡时间
+    var myDate = new Date()
+    var h = myDate.getHours();
+    var m = myDate.getMinutes();
+    if (h >= 13 && m >= 30 && h < 14) {
+      return false
+    } else if (h >= 14 && h <= 17) {
+      return false
+    } else {
+      return true
+    }
   }
 })

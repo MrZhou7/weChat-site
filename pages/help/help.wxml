@@ -8,22 +8,33 @@
         <input class="weui-input" value='{{floor}}' bindinput="floorInput" placeholder="请输入楼层"/>
     </view>
   </view>
-  <view class="weui-cell ">
+  <!-- <view class="weui-cell ">
     <view class="weui-cell__hd">
         <view class="weui-label">区域</view>
     </view>
     <view class="weui-cell__bd">
       <textarea class="weui-textarea" value='{{help_area}}' bindinput="areaInput" placeholder="填写问题出现区域" auto-height />
     </view>
-  </view>
-  <view class="weui-cell">
+  </view> -->
+  <!-- <view class="weui-cell">
     <view class="weui-cell__hd">
         <view class="weui-label">问题说明</view>
     </view>
     <view class="weui-cell__bd">
         <textarea class="weui-textarea" value='{{problem}}' bindinput="problemInput" placeholder="请填写问题情况" auto-height />
     </view>
+  </view> -->
+  <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">问题类别</view>
+      </view>
+      <view class="weui-cell__bd">
+          <picker bindchange="problemInput" value="{{problemIndex}}" range="{{problems}}">
+              <view class="weui-select weui-select_in-select-after">{{problems[problemIndex]}}</view>
+          </picker>
+      </view>
   </view>
+
   <view class="weui-cell">
     <view class="button-sp-area">
       <button class="weui-btn btn" type="default" bindtap="clearVoice">清 空</button>
@@ -36,7 +47,7 @@
   </view>
   <view class="weui-cell ">
     <view class="weui-cell__bd">
-        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音内容" auto-height maxlength="10000" />
+        <textarea class="weui-textarea" value='{{voice}}' bindinput="voiceInput" placeholder="语音或打字描述问题及发生区域" auto-height maxlength="10000" />
     </view>
   </view>
    <!-- <view class="weui-cell ">

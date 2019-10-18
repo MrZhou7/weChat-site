@@ -60,6 +60,9 @@ Page({
       const error = that.WxValidate.errorList[0]
       that.showModal(error)
       return false
+    } else if (this.data.work == 1 && params.morrow == '') {
+      common.alertMsg("请填写次日晨会宣讲内容")
+      return false
     } else{
       let data = {
         coustmer_name: params.coustmer_name,
@@ -83,17 +86,11 @@ Page({
   //验证函数
   initValidate() {
     const rules = {
-      coustmer_name: {
-        required: true
-      },
       money: {
         number: true
       }
     }
     const messages = {
-      coustmer_name: {
-        required: '请填写商户名称'
-      },
       money: {
         number: '请输入有效的数字'
       }

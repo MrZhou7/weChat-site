@@ -33,7 +33,9 @@ Page({
     let _this = this;
     wx.login({  //登录
       success: function (res) {
-        let params = { js_code: res.code }
+        let params = { 
+          js_code: res.code
+        }
         api.getCode(params).then(list => { // 将获取code传参获取openid和session_key并储存
           App.globalData.openId = list.data.openid; //全局添加openid
           wx.setStorageSync('session_key', list.data.session_key)
@@ -177,9 +179,11 @@ Page({
     api.getMall(data).then(res => {
       console.log(res)
       let mallData = common.getCompanyname(res.data.data)
+      console.log(mallData)
       if (res.data.data.length > 0) {
         _this.setData({
-          mall: [mallData],
+          mallIndex: 0,
+          mall: mallData,
           mallList: res.data.data,
           mallId: res.data.data[0],
           mallName: res.data.data[0].subcompanyname
