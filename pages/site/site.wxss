@@ -46,6 +46,7 @@
   flex-direction: row;
 }
 .step_text{
+  font-size: 48rpx;
    flex: 2;
 }
 .step_num{

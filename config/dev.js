@@ -1,5 +1,6 @@
 'use strict';
 var baseUrl = "https://report.ouyada.com/livemanage/public/index.php/"
+//var baseUrl = "http://10.1.2.168/"
 const config = {
   "base":"https://report.ouyada.com/livemanage/public/",
   "getCode": baseUrl + "Wechat/jscode2session",
@@ -7,6 +8,7 @@ const config = {
   "getOa": baseUrl + "User/getUserArea",
   "getArea": baseUrl + "User/getAllAreaList",
   "getMall": baseUrl + "User/getMallListByAreaId",
+  "getMallMore": baseUrl + "User/getJoinMallListByAreaId", // 获取筹建店
   "bindMall": baseUrl + "User/bindMall", // 绑定（修改）门店信息
   "addInterview": baseUrl + "Interview/addInterview", // 我在现场的新增所有接口
   "updateInterview": baseUrl + "Interview/updateInterview", // 我在现场的修改所有接口
@@ -39,6 +41,8 @@ const config = {
   "getAdviceLists": baseUrl + "Monitoring/getAdviceLists", // 监控运营建议列表
   "getAdviceDetail": baseUrl + "Monitoring/getAdviceDetail", // 监控运营建议详情
   "getUserRoleByOa": baseUrl + "User/getUserRoleByOa", // 获取用户角色权限
+  "getUserStepNum": baseUrl + "Monitoring/getUserStepNum",  // 查看别人微信步数
+  "getUserSessionKey": baseUrl + "Monitoring/getUserInfoByUserId"  // 查看别人微信步数
 }; 
 
 module.exports = config;

@@ -11,19 +11,25 @@ Page({
   data: {
     files: [],
     business: '',
-    pic: ''
+    pic: '',
+    stepFiles: [],
+    step_num_pic:'',
+    num: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      num: options.id
+    })
     wx.setNavigationBarTitle({
       title: options.name
     })
     let centerInfo = {
       session_key: wx.getStorageSync('session_key'),
-      date: App.globalData.date,
+      date: App.globalData.dataView,
       type: options.id == 2 ? "welcome" : "send",
       user_id: App.globalData.userId
     }
@@ -32,7 +38,9 @@ Page({
       console.log(reqData)
       this.setData({
         files: [apiList.base + reqData.pic],
+        stepFiles: [apiList.base + reqData.step_num_pic],
         pic: reqData.pic,
+        step_num_pic:reqData.step_num_pic,
         business: reqData.violations_customer
       })
     })
@@ -46,7 +54,12 @@ Page({
       urls: this.data.files // 需要预览的图片http链接列表
     })
   },
-
+  previewImageTwo: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.stepFiles // 需要预览的图片http链接列表
+    })
+  },
   businessInput: function (e) {
     this.setData({
       business: e.detail.value

@@ -66,6 +66,14 @@ let getMall = (data) => {
     resolve(apiRequest(apiList.getMall, 'post', data))
   })
 }
+
+//获取筹建门店
+let getMallMore = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getMallMore, 'post', data))
+  })
+}
+
 //获取微信步数
 let getStep = (data) => {
   return new Promise((resolve, reject) => {
@@ -270,6 +278,19 @@ let getUserRoleByOa = (data) => {
   })
 }
 
+//获取别人微信步数
+let getUserStepNum = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getUserStepNum, 'post', data))
+  })
+}
+//获取 查询的任session微信步数
+let getUserSessionKey = (data) => {
+  return new Promise((resolve, reject) => {
+    resolve(apiRequest(apiList.getUserSessionKey, 'post', data))
+  })
+}
+
 //最后需要将具体调用的函数暴露出，给具体业务调用
 
 export default {
@@ -308,5 +329,8 @@ export default {
   getMarketDetails: getMarketDetails,
   getAdviceLists: getAdviceLists,
   getAdviceDetail: getAdviceDetail,
-  getUserRoleByOa: getUserRoleByOa
+  getUserRoleByOa: getUserRoleByOa,
+  getUserStepNum:getUserStepNum,
+  getUserSessionKey: getUserSessionKey,
+  getMallMore: getMallMore
 }

@@ -15,7 +15,9 @@ Page({
     isSubmit: true,
     num: null,
     id: null,
-    isBtn: true
+    isBtn: true,
+    step_num_pic: '',
+    stepFiles: []
   },
 
   /**
@@ -52,7 +54,9 @@ Page({
           console.log(reqData)
           this.setData({
             files: [apiList.base + reqData.pic],
+            stepFiles: [apiList.base + reqData.step_num_pic],
             pic: reqData.pic,
+            step_num_pic: reqData.step_num_pic,
             business: reqData.violations_customer,
             id: reqData.id,
             isSubmit: false,
@@ -62,13 +66,13 @@ Page({
     })
   },
 
-  chooseImage: function () {
-    common.chooseImage(this, this.data.files, this.data.pic)
-  },
   formSubmit: function (e) {
     let that = this
     if (this.data.files == '') {
       common.alertMsg('请拍照上传')
+      return false
+    } else if (this.data.num == 6 && this.data.stepFiles == '') {
+      common.alertMsg('请上传我在现场步数')
       return false
     } else {
       if (that.data.isSubmit) {
@@ -76,7 +80,8 @@ Page({
           type: that.data.num == 2 ? "welcome" : "send",
           session_key: wx.getStorageSync('session_key'),
           pic: that.data.pic,
-          violations_customer: this.data.business
+          violations_customer: this.data.business,
+          step_num_pic: that.data.step_num_pic
         }).then(res => {
           wx.showToast({
             title: '提交成功',
@@ -91,7 +96,8 @@ Page({
           session_key: wx.getStorageSync('session_key'),
           pic: that.data.pic,
           violations_customer: that.data.business,
-          id: that.data.id
+          id: that.data.id,
+          step_num_pic: that.data.step_num_pic
         }).then(res => {
           wx.showToast({
             title: '修改成功',
@@ -106,12 +112,27 @@ Page({
       
     }
   },
+  chooseImage: function () {
+    common.chooseImage(this, this.data.files, this.data.pic)
+  },
   //查看照片大图
   previewImage: function (e) {
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
     })
+  },
+
+  //查看步数大图
+  previewImageTwo: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.id, // 当前显示图片的http链接
+      urls: this.data.stepFiles // 需要预览的图片http链接列表
+    })
+  },
+  //步数大图
+  chooseImageTwo: function (e) {
+    common.chooseImagePhoto(this, this.data.stepFiles, this.data.step_num_pic)
   },
 
   businessInput: function (e) {

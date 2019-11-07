@@ -46,7 +46,6 @@ Page({
     })
   },
   goDetail: function (e) {
-    console.log(e)
     let id = this.data.list[e.currentTarget.dataset.index].id;
     wx.navigateTo({
       url: '../marketDetail/marketDetail?id=' + id,

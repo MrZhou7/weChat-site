@@ -4,13 +4,21 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.0",
@@ -39,6 +47,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 13,
 			"list": [
@@ -50,9 +62,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/site/morning/morning",
-					"pathName": "pages/site/morning/morning",
+					"id": 1,
+					"name": "pages/monitoring/monitoring",
+					"pathName": "pages/monitoring/monitoring",
 					"query": "",
 					"scene": null
 				},
@@ -78,9 +90,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/help/help",
-					"pathName": "pages/help/help",
+					"id": 5,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				},
@@ -130,6 +142,13 @@
 					"id": 12,
 					"name": "pages/siteView/adviceView/adviceView",
 					"pathName": "pages/siteView/adviceView/adviceView",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				},

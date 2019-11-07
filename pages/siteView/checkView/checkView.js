@@ -31,7 +31,7 @@ Page({
     let _this = this;
     let centerInfo = {
       session_key: wx.getStorageSync('session_key'),
-      date: App.globalData.date,
+      date: App.globalData.dataView,
       type: options.id == 3 ? "morning_tour" : "afternoon_tour",
       user_id: App.globalData.userId
     }

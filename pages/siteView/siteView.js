@@ -2,7 +2,6 @@
 const App = getApp();
 import api from '../../utils/request.js'
 
-const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -106,6 +105,5 @@ Page({
         wx.navigateTo({ url: '../siteView/adviceView/adviceView?id=' + num + '&name=' + name });
         break;
     }
-  },
-
+  }
 })

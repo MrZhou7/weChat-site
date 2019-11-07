@@ -23,7 +23,7 @@ Page({
     let _this = this;
     let Info = {
       session_key: wx.getStorageSync('session_key'),
-      date: App.globalData.date,
+      date: App.globalData.dataView,
       type: 'morning_meeting',
       user_id: App.globalData.userId
     }

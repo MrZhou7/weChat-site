@@ -14,7 +14,7 @@
                 <view class="weui-uploader__input" bindtap="chooseImage"></view>
             </view>
             <view class="weui-uploader__file" bindtap="previewImage" id="0">
-              <image class="weui-uploader__img" src="{{files }}" mode="aspecFill"/>
+              <image class="weui-uploader__img" src="{{files}}" mode="aspecFill"/>
             </view>
           </view>
         </view>
@@ -26,6 +26,27 @@
           <textarea class="weui-textarea" value='{{business}}' bindinput="businessInput" placeholder="请输入违规商户名称" auto-height />
       </view>
     </view>
+
+    <view class="weui-cell" wx:if="{{num == 6}}">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+                <view class="weui-uploader__title">我在现场步数截图<text class="small"> (1张)</text></view>
+            </view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
+              <view class="weui-uploader__input" bindtap="chooseImageTwo"></view>
+            </view>
+            <view class="weui-uploader__file" bindtap="previewImageTwo" id="0">
+              <image class="weui-uploader__img" src="{{stepFiles}}" mode="aspecFill"/>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
   </view>
   <view class="weui-btn-area">
     <button class="weui-btn" type="primary" form-type="submit" wx:if="{{isBtn}}"> 提 交 </button>

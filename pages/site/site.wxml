@@ -5,7 +5,7 @@
     <view>{{item.text}}</view>
   </view>
   <view class='step'>
-    <view class='step_text'>今日步数</view>
+    <view class='step_text'>{{data}}</view>
     <view class='step_num'>
       <text>{{stepNum}}</text>
     </view>

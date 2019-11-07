@@ -24,7 +24,7 @@ Page({
     let _this = this;
     let centerInfo = {
       session_key: wx.getStorageSync('session_key'),
-      date: App.globalData.date,
+      date: App.globalData.dataView,
       type: "interview",
       user_id: App.globalData.userId
     }

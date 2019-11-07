@@ -24,7 +24,7 @@ Page({
   onLoad: function (options) {
     api.getMatterDetail({
       session_key: wx.getStorageSync('session_key'),
-      date: App.globalData.date,
+      date: App.globalData.dataView,
       user_id: App.globalData.userId
     }).then(res => {
       const reqData = res.data.data;

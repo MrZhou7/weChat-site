@@ -1,6 +1,7 @@
 //获取应用实例 
 const App = getApp();
 import api from '../../utils/request.js'
+import common from '../../utils/common.js'
 
 const app = getApp();
 Page({
@@ -47,6 +48,7 @@ Page({
     }
     ],
     stepNum: wx.getStorageSync("runNum"),
+    data: common.getDate()
     // bgColor: '#6aaeed'
   },
 

@@ -37,7 +37,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      date: App.globalData.date,
+      date: App.globalData.dataView ? App.globalData.dataView : common.getDate(),
       endTime: common.getDate()
     })
     var that = this;
@@ -68,7 +68,7 @@ Page({
           session_key: wx.getStorageSync('session_key'),
           id: dataList.area_id,
         }
-        that.getMall(data, that)
+        that.getMallMore(data, that)
       } else {
         that.setData({
           area: [dataList.area],
@@ -94,7 +94,6 @@ Page({
   },
   // 选择区域
   bindAreaChange: function (e) {
-    console.log(e)
     if (this.data.bmsx == 0) {
       this.setData({
         areaIndex: e.detail.value,
@@ -110,10 +109,7 @@ Page({
   },
   // 选择门店
   bindMallChange: function (e) {
-    console.log(e)
-    console.log(this.data)
     if (this.data.mallList.length > 0 && this.data.bmsx == 0 || this.data.bmsx == 1) {
-      
       this.setData({
         mallIndex: e.detail.value,
         mall_id: this.data.mallList[e.detail.value].id,
@@ -128,7 +124,6 @@ Page({
   },
   //选择人员
   userChange:function(e){
-    console.log(e)
     if (this.data.userList.length > 0) {
       this.setData({
         userIndex: e.detail.value,
@@ -141,7 +136,30 @@ Page({
   // 获取门店信息
   getMall: function (data, _this) {
     api.getMall(data).then(res => {
-      console.log(res)
+      if (res.data.data.length > 0) {
+        let mallData = common.getCompanyname(res.data.data)
+        _this.setData({
+          mallIndex: 0,
+          mall: mallData,
+          mallList: res.data.data,
+          mall_id: res.data.data[0].id,
+          mallName: res.data.data[0].subcompanyname
+        })
+      } else {
+        _this.setData({
+          mall: [],
+          mall_id: null,
+          mallIndex: 0,
+          mallList: [],
+          mallName: '',
+        })
+      }
+    })
+  },
+
+  // 获取门店信息（筹建店）
+  getMallMore: function (data, _this) {
+    api.getMallMore(data).then(res => {
       if (res.data.data.length > 0) {
         let mallData = common.getCompanyname(res.data.data)
         _this.setData({
@@ -165,9 +183,7 @@ Page({
 
   // 获取人员信息
   getUser: function (data, _this) {
-    console.log("111")
     api.getUser(data).then(res => {
-      console.log(res)
       if (res.data.data.length > 0) {
         let mallData = this.getUserName(res.data.data)
         _this.setData({
@@ -207,7 +223,7 @@ Page({
       App.globalData.userId = this.data.user_id;
       App.globalData.userName = this.data.userName;
       App.globalData.userGh = this.data.gh;
-      App.globalData.date = this.data.date;
+      App.globalData.dataView = this.data.date;
       wx.navigateTo({
         url: '../siteView/siteView'
       });

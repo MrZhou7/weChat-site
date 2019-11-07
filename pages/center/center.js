@@ -30,7 +30,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      date: App.globalData.date,
+      date: App.globalData.date ? App.globalData.date : common.getDate(),
       endTime: common.getDate()
     })
     var that = this;
@@ -41,7 +41,7 @@ Page({
         gh: dataList.gh,
         bmsx: dataList.bmsx
       })
-      if (dataList.bmsx == 0) {
+      if (dataList.bmsx == 0 || dataList.bmsx == 1) {
         api.getArea({ session_key: wx.getStorageSync('session_key') }).then(req => {
           console.log(req)
           let areaData = common.getCompanyname(req.data.data)
@@ -51,19 +51,26 @@ Page({
             area: areaData, 
             areaList: req.data.data
            })
+          let data = {
+            session_key: wx.getStorageSync('session_key'),
+            id: req.data.data[0].id,
+          }
+          that.getMall(data, that)
         })
-      } else if (dataList.bmsx == 1) {
-        that.setData({
-          area: [dataList.area],
-          areaName: dataList.area,
-          area_id: dataList.area_id,
-        })
-        let data = {
-          session_key: wx.getStorageSync('session_key'),
-          id: dataList.area_id,
-        }
-        that.getMall(data, that)
-      } else {
+      }
+      //  else if (dataList.bmsx == 1) {
+      //   that.setData({
+      //     area: [dataList.area],
+      //     areaName: dataList.area,
+      //     area_id: dataList.area_id,
+      //   })
+      //   let data = {
+      //     session_key: wx.getStorageSync('session_key'),
+      //     id: dataList.area_id,
+      //   }
+      //   that.getMall(data, that)
+      // } 
+      else {
         that.setData({
           area: [dataList.area],
           areaName: dataList.area,
@@ -84,7 +91,7 @@ Page({
   // 选择区域
   bindAreaChange: function (e) {
     console.log(e)
-    if (this.data.bmsx == 0){
+    if (this.data.bmsx == 0 || this.data.bmsx == 1){
      this.setData({
        areaIndex: e.detail.value,
        area_id: this.data.areaList[e.detail.value].id,
@@ -99,8 +106,8 @@ Page({
   },
   // 选择门店
   bindMallChange: function (e) {
-    console.log(e)
-    if (this.data.mallList.length > 0 && this.data.bmsx == 0 || this.data.bmsx == 1){
+    console.log(this.data.mallList.length)
+    if (this.data.mallList.length > 0 && this.data.bmsx <= 1){
       this.setData({
         mallIndex: e.detail.value,
         mall_id: this.data.mallList[e.detail.value].id,

@@ -73,6 +73,7 @@ App({
     date:'',
     userId: '', // 员工id
     userName: '', // 员工姓名
-    userGh: '' // 员工工号
+    userGh: '', // 员工工号
+    dataView: '' // 线上监控日期
   }
 })
