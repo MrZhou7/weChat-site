@@ -1,165 +1,82 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
-	"appid": "wx1ba3f91a8e68cad8",
-	"projectname": "worksite",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": 13,
-			"list": [
-				{
-					"id": 0,
-					"name": "pages/siteView/siteView",
-					"pathName": "pages/siteView/siteView",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "pages/monitoring/monitoring",
-					"pathName": "pages/monitoring/monitoring",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/site/meeting/meeting",
-					"pathName": "pages/site/meeting/meeting",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/site/check/check",
-					"pathName": "pages/site/check/check",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/orderList/orderDetail/orderDetail",
-					"pathName": "pages/orderList/orderDetail/orderDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/management/addMarket/addMarket",
-					"pathName": "pages/management/addMarket/addMarket",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/management/market/market",
-					"pathName": "pages/management/market/market",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/notice/notice",
-					"pathName": "pages/notice/notice",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/site/businesstalk/businesstalk",
-					"pathName": "pages/site/businesstalk/businesstalk",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/siteView/siteView",
-					"pathName": "pages/siteView/siteView",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
-					"name": "pages/siteView/adviceView/adviceView",
-					"pathName": "pages/siteView/adviceView/adviceView",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.13.1",
+  "appid": "wx1ba3f91a8e68cad8",
+  "projectname": "worksite",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "保洁评定",
+          "pathName": "pages/cleaning/cleaningDetail/cleaningDetail",
+          "query": "id=1&name=保洁晨巡",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "个人中心",
+          "pathName": "pages/center/center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "空白页",
+          "pathName": "pages/blank/blank",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

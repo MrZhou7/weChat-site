@@ -13,6 +13,8 @@
     "pages/ranking/ranking",
     "pages/log/log",
     "pages/notice/notice",
+    "pages/cleaning/cleaning",
+    "pages/cleaning/cleaningDetail/cleaningDetail",
     "pages/notice/noticeDetail/noticeDetail",
     "pages/management/management",
     "pages/management/market/market",
@@ -30,7 +32,8 @@
     "pages/siteView/adviceView/adviceView",
     "pages/siteView/marketView/marketView",
     "pages/siteView/adviceDetail/adviceDetail",
-    "pages/siteView/marketDetail/marketDetail"
+    "pages/siteView/marketDetail/marketDetail",
+    "pages/blank/blank"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,7 +43,7 @@
   },
   "plugins": {
     "WechatSI": {
-    "version": "0.2.2",
+    "version": "0.3.4",
     "provider": "wx069ba97219f66d99"
     }
   },
