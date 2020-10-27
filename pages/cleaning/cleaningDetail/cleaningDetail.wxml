@@ -1,0 +1,110 @@
+<!-- pages/cleaning/cleaningDetail/cleaningDetail.wxml -->
+<view class="prompt">
+  <i class="weui-icon-warn"></i>
+  <text style="margin-left: 20rpx;">{{text}},逾期无法填写!</text>
+</view>
+<view class="img">
+ <image mode="widthFix" src="{{bg}}"></image>
+</view>
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="content">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__overview">
+              <view class="weui-uploader__title">
+                保洁合影
+                <text class="small">(1张)</text>
+              </view>
+            </view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box" wx:if="{{isBtn}}">
+              <view class="weui-uploader__input" bindtap="chooseImage"></view>
+            </view>
+            <view class="weui-uploader__file" bindtap="previewImage" id="0">
+              <image class="weui-uploader__img" src="{{files}}" mode="aspecFill" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <view class="weui-label">应到人数(合同日均至少)</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input type="number" class="weui-input" name='should_num' value='{{should_num}}' placeholder-style='text-align:right' placeholder="输入应到人数" />
+      </view>
+    </view>
+    <view class="weui-cell">
+      <view class="weui-cell__hd">
+        <view class="weui-label">实到人数({{text1}})</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input type="number" class="weui-input" name='arrived_num' value='{{arrived_num}}' placeholder-style='text-align:right' placeholder="输入实到人数" />
+      </view>
+    </view>
+    <view wx:for="{{cleanList}}" wx:key="id">
+      <view class="weui-cells__title">
+        <span style="color: red;">*</span>
+        {{item.name}}
+      </view>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{item.id}}" data-title="{{item.name}}" bindtap="openDialog">
+        <view class="weui-cell__bd">
+          扣分项
+          <span style="color:#A3A3A3;">(请选择扣分项)</span>
+        </view>
+        <view class="weui-cell__ft small weui-cell__ft_in-access">扣{{item.num || 0}}分</view>
+      </view>
+      <view wx:if="{{item.showList.length > 0}}" wx:for="{{item.showList}}" wx:for-item="pro" wx:key="index" class="list">
+        <view class="weui-cell__bd">{{pro.name}}</view>
+        <radio-group bindchange="radioChange" data-id="{{pro.id}}" data-fatherId="{{item.id}}">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <radio value="{{pro.one}}" checked="{{pro.one == pro.num}}" />
+              -{{pro.one}}分
+            </view>
+            <view class="weui-cell__hd">
+              <radio value="{{pro.two}}" checked="{{pro.two == pro.num}}" />
+              -{{pro.two}}分
+            </view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type="submit" wx:if="{{isBtn}}">提 交</button>
+    </view>
+  </view>
+</form>
+<view class="fadeIn" wx:if="{{dialog}}">
+  <view class="weui-mask" catchtouchmove="preventTouchMove"></view>
+  <view class="weui-half-screen-dialog">
+    <view class="weui-half-screen-dialog__hd">
+      <view class="weui-half-screen-dialog__hd__side" bindtap="close">
+        <a class="weui-icon-btn">
+          关闭
+          <i class="weui-icon-close-thin"></i>
+        </a>
+      </view>
+      <view class="weui-half-screen-dialog__hd__main">
+        <strong class="weui-half-screen-dialog__title">{{title}}扣分项(多选)</strong>
+      </view>
+      <view class="weui-half-screen-dialog__hd__side">
+        <a class="confirmBtn" bindtap="confirmBtn">确 定</a>
+      </view>
+    </view>
+    <view class="weui-half-screen-dialog__bd" style="height:600rpx">
+      <view class="weui-cells_checkbox">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="box {{item.checked?'active':''}}" wx:for="{{cleanDetail}}" wx:key="id">
+            <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}" />
+            {{item.name}}
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+</view>

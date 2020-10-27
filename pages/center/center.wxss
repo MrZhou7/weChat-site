@@ -5,3 +5,9 @@
 .weui-select{
   overflow: hidden
 }
+.weui-cells{
+  margin-top: 0px;
+}
+.weui-cell_select{
+  padding-left: 16px;
+}

@@ -5,33 +5,7 @@ page{
 .container{
   overflow: hidden
 }
-.box{
-  width: 50%;
-  float: left;
-}
-.wrap{
-  margin: 0 1%;
-  width: 98%;
-}
-.wrap image{
-  width: 100%;
-}
-.wrapTop{
-  line-height: 140rpx;
-  text-align: center;
-  font-size: 22px;
-  background-color: #C6C4C5;
-  margin: 0 1% 5px;
-  color: #3F3F3F;
-}
-.wrapBottom{
-  line-height: 140rpx;
-  text-align: center;
-  font-size: 22px;
-  background-color: #C6C4C5;
-  margin: 0 1% 10px;
-  color: #3F3F3F;
-}
+
 .scroll_view_box{
   color: #f76a24;
   background:#fefcec;
@@ -60,4 +34,40 @@ page{
   margin-left: 30rpx;
   line-height: 72rpx;
   align-items: center;
+}
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding: 10rpx 0;
+  /* justify-content: center; */
+  line-height: normal;
+  margin: 0;
+  position: static;
+}
+.box{
+  width: 344rpx;
+  margin: 0 0 10rpx 20rpx;
+  height: 308rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 20rpx;
+}
+.wrap{
+  margin: 68rpx auto 40rpx;
+  width: 154rpx;
+  height: 154rpx;
+}
+.wrap image{
+  width: 100%;
+}
+
+.wrapBottom{
+  line-height: 140rpx;
+  text-align: center;
+  font-size: 22px;
+  background-color: #C6C4C5;
+  margin: 0 1% 10px;
+  color: #3F3F3F;
 }

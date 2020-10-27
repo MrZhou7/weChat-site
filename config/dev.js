@@ -1,7 +1,10 @@
 'use strict';
 var baseUrl = "https://report.ouyada.com/livemanage/public/index.php/"
-//var baseUrl = "http://10.1.2.168/"
+// var baseUrl = "http://10.1.2.168/livemanage/public/index.php/"
 const config = {
+  "api": "https://report.ouyada.com/livemanage/public/index.php/",
+  // "api": "http://10.1.2.168/livemanage/public/index.php/",
+  // "base": "http://10.1.2.168/livemanage/public/",
   "base":"https://report.ouyada.com/livemanage/public/",
   "getCode": baseUrl + "Wechat/jscode2session",
   "login": baseUrl + "User/bindOA",

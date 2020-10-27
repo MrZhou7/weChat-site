@@ -1,6 +1,7 @@
 // pages/center/center.js
 const App = getApp();
 import api from '../../utils/request.js'
+import http from '../../utils/api.js'
 import common from '../../utils/common.js'
 
 Page({
@@ -9,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isMall: false,
     date: '',
     endTime:'',
     area: [],
@@ -24,7 +26,7 @@ Page({
     gh:'',
     bmsx: null
   },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -36,14 +38,12 @@ Page({
     var that = this;
     api.getInfo({ session_key: wx.getStorageSync('session_key') }).then(res => {
       let dataList = res.data.data;
-      console.log(dataList)
       that.setData({
         gh: dataList.gh,
         bmsx: dataList.bmsx
       })
       if (dataList.bmsx == 0 || dataList.bmsx == 1) {
         api.getArea({ session_key: wx.getStorageSync('session_key') }).then(req => {
-          console.log(req)
           let areaData = common.getCompanyname(req.data.data)
           that.setData({ 
             areaName: req.data.data[0].subcompanyname,
@@ -88,7 +88,7 @@ Page({
       date: e.detail.value
     })
   },
-  // 选择区域
+  // 选择商场
   bindAreaChange: function (e) {
     console.log(e)
     if (this.data.bmsx == 0 || this.data.bmsx == 1){
@@ -106,7 +106,6 @@ Page({
   },
   // 选择门店
   bindMallChange: function (e) {
-    console.log(this.data.mallList.length)
     if (this.data.mallList.length > 0 && this.data.bmsx <= 1){
       this.setData({
         mallIndex: e.detail.value,
@@ -117,8 +116,7 @@ Page({
   },
   // 获取门店信息
   getMall: function (data, _this) {
-    api.getMall(data).then(res => {
-      console.log(res)
+    http.post('User/getMallListByType', data).then(res => {
       if (res.data.data.length > 0){
        let mallData = common.getCompanyname(res.data.data)
        _this.setData({
@@ -152,7 +150,6 @@ Page({
         mall: this.data.mallName,
         mall_id: this.data.mall_id
       }
-      console.log(list)
       wx.showLoading()
       api.bindMall(list).then(res => {
         wx.navigateBack({

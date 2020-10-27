@@ -1,2 +1,5 @@
 /* pages/notice/noticeDetail/noticeDetail.wxss */
 @import '../../../wxParse/wxParse.wxss';
+.uinn{
+  margin: 10rpx 24rpx;
+}

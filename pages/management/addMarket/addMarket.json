@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "市调对标",
   "usingComponents": {
-    "i-icon": "../../components/dist/icon/index"
+    "i-icon": "../../../components/dist/icon/index"
   }
 }

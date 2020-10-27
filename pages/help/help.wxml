@@ -25,7 +25,7 @@
     </view>
   </view> -->
   <view class="weui-cell weui-cell_select">
-      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after" style="padding-left: 16px;">
           <view class="weui-label">问题类别</view>
       </view>
       <view class="weui-cell__bd">
@@ -36,14 +36,10 @@
   </view>
 
   <view class="weui-cell">
-    <view class="button-sp-area">
       <button class="weui-btn btn" type="default" bindtap="clearVoice">清 空</button>
-    </view>
-    <view class="button-sp-area"></view>
-    <view class="button-sp-area"></view>
-    <view class="button-sp-area">
+
       <button class="weui-btn btn" type="primary" catchtouchstart="streamRecord" catchtouchend="endStreamRecord">按住 说话</button>
-    </view>
+
   </view>
   <view class="weui-cell ">
     <view class="weui-cell__bd">

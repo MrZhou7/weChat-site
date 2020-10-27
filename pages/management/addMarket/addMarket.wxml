@@ -110,8 +110,8 @@
         </view>
       </view>
       <view class="handle" wx:if="{{isShow}}">
-        <i-icon bindtap="add" type="add" size="50" color="#09BB07"/>
-        <i-icon bindtap="del" data-index="{{i}}" wx:if="{{log.length > 1}}" type="delete" size="50" color="red"/>
+        <i-icon bindtap="add" type="add" size="40" color="#09BB07"/>
+        <i-icon bindtap="del" data-index="{{i}}" wx:if="{{log.length > 1}}" type="delete" size="40" color="red"/>
       </view>
     </view>
     <view wx:for="{{logTwo}}" wx:key="item" wx:for-index='i' class="wrap"> 
@@ -142,8 +142,8 @@
         </view>
       </view>
       <view class="handle" wx:if="{{isShow}}">
-        <i-icon bindtap="addTwo" type="add" size="50" color="#09BB07"/>
-        <i-icon bindtap="delTwo" data-index="{{i}}" wx:if="{{logTwo.length > 1}}" type="delete" size="50" color="red"/>
+        <i-icon bindtap="addTwo" type="add" size="40" color="#09BB07"/>
+        <i-icon bindtap="delTwo" data-index="{{i}}" wx:if="{{logTwo.length > 1}}" type="delete" size="40" color="red"/>
       </view>
     </view>
     <view class="weui-cells__title">启发与借鉴：</view>

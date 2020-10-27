@@ -2,7 +2,7 @@
 <view class="weui-cells weui-cells_after-title">
   <view class="weui-cell ">
     <view class="weui-cell__hd">
-        <view class="weui-label">选择日期</view>
+        <view class="weui-label">日期</view>
     </view>
     <view class="weui-cell__bd">
         <picker mode="date" value="{{date}}" end="{{endTime}}" bindchange="bindDateChange">
@@ -12,7 +12,7 @@
   </view>
   <view class="weui-cell weui-cell_select">
     <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">选择区域</view>
+        <view class="weui-label">商场</view>
     </view>
     <view class="weui-cell__bd">
         <picker bindchange="bindAreaChange" value="{{areaIndex}}" range="{{area}}">
@@ -20,9 +20,19 @@
         </picker>
     </view>
   </view>
-   <view class="weui-cell weui-cell_select">
+  <view class="weui-cell weui-cell_select">
     <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">选择门店</view>
+        <view class="weui-label">选择</view>
+    </view>
+    <view class="weui-cell__bd">
+        <picker bindchange="bindMallChange" value="{{mallIndex}}" range="{{mall}}">
+            <view class="weui-select weui-select_in-select-after">{{mall[mallIndex]}}</view>
+        </picker>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_select" wx:if="{{isMall}}">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">选择</view>
     </view>
     <view class="weui-cell__bd">
         <picker bindchange="bindMallChange" value="{{mallIndex}}" range="{{mall}}">

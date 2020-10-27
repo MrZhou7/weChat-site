@@ -42,3 +42,6 @@ page,
 .box_bottom{
   display: none;
 }
+.weui-cells{
+  margin-top: 0;
+}

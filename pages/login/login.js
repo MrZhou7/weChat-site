@@ -3,6 +3,7 @@ const App = getApp();
 import WxValidate from '../../utils/WxValidate.js'
 import common from '../../utils/common.js'   //  引入common.js文件
 var api = require('../../utils/request.js').default;
+import http from '../../utils/api.js'
 
 Page({
 
@@ -41,7 +42,6 @@ Page({
           wx.setStorageSync('session_key', list.data.session_key)
         
           api.getInfo({ session_key: wx.getStorageSync('session_key') }).then(req => { // 获取当前用户登录信息
-            console.log(req)
             if (Object.keys(req.data.data).length == 0) { // 绑定工号 姓名
               _this.setData({
                 isPageHide: true
@@ -53,7 +53,6 @@ Page({
                 isHide: false, // 显示绑定区域门店
               })
               api.getOaData({ session_key: wx.getStorageSync('session_key'), gh: req.data.data.gh }).then(res => { // 获取用户所在区域
-                console.log(res)
                 let reqData = res.data.data;
                 if (reqData.area_id == 0 && reqData.mall_id == 0) { // 为总部人员，需选择区域、门店
                   _this.getArea(_this);  // 获取区域信息
@@ -200,7 +199,7 @@ Page({
     })
   },
   getMall: function (data, _this) { // 选择是默认第一个还是根据选择来定区域
-    api.getMall(data).then(res => {
+    http.post('User/getMallListByType', data).then(res => {
       console.log(res)
       let mallData = common.getCompanyname(res.data.data)
       console.log(mallData)

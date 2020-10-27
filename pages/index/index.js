@@ -9,49 +9,65 @@ Page({
       {
         id: '1',
         text: '我在现场',
-        bg:'../../images/1.jpg'
+        color: '#FF2A2A',
+        bg:'../../images/xianchang.svg'
       },
       {
         id: '2',
         text: '寻求帮助',
-        bg: '../../images/2.jpg'
+        color: '#FE8509',
+        bg: '../../images/bangzhu.svg'
       },
       {
         id: '3',
         text: '处理工单',
-        bg: '../../images/3.jpg'
+        color: '#00B4B6',
+        bg: '../../images/gongdan.svg'
       }, {
         id: '4',
         text: '火眼金睛',
-        bg: '../../images/4.jpg'
+        color: '#5FBC1D',
+        bg: '../../images/huoyan.svg'
       }
       , {
         id: '5',
         text: '劳苦功高',
-        bg: '../../images/5.jpg'
+        color: '#9A51E5',
+        bg: '../../images/laoku.svg'
       }
       , {
         id: '6',
         text: '查看公告',
-        bg: '../../images/6.jpg'
+        color: '#EB5B87',
+        bg: '../../images/gonggao.svg'
       }
       , {
         id: '7',
         text: '事项记录',
-        bg: '../../images/7.jpg'
+        color: '#F88C3E',
+        bg: '../../images/jilu.svg'
       }
       , {
         id: '8',
         text: '管理提升',
-        bg: '../../images/8.jpg'
+        color: '#08BFE9',
+        bg: '../../images/guanli.svg'
+      }
+      , {
+        id: '9',
+        text: '个人中心',
+        color: '#FF3B3B',
+        bg: '../../images/zhongxin.svg'
+      }
+      , {
+        id: '10',
+        text: '保洁评定',
+        color: '#00E676',
+        bg: '../../images/baojie.svg'
       }
     ],
-    center: {
-      id: '9',
-      text: '个人中心'
-    },
     monitoring: {
-      id: '10',
+      id: '11',
       text: '线上监控'
     },
     noticeList: '',
@@ -59,6 +75,7 @@ Page({
   },
 
   onLoad: function (options) {
+    this.getBlank()
     this.getNoticeList()
     this.getShow()
   },
@@ -97,13 +114,6 @@ Page({
       url: '../notice/notice?id=6&name=查看公告'
     });
   },
-  goCenter: function(e){ // 跳转个人中心
-    let name = e.currentTarget.dataset.text;
-    let num = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../center/center?id=' + num + '&name=' + name,
-    });
-  },
   goMonitoring: function (e) { // 跳转线上监控
     let name = e.currentTarget.dataset.text;
     let num = e.currentTarget.dataset.id;
@@ -111,6 +121,28 @@ Page({
       url: '../monitoring/monitoring?id=' + num + '&name=' + name,
     });
   },
+  //判断时候移动端
+  getBlank: function() {
+    let that = this;
+    wx.getSystemInfo({
+      success: res => {
+        console.log('设备信息', res)
+        if (!that.isNormalDevice(res)) {
+          wx.redirectTo({
+            url: '/pages/blank/blank'
+          })
+        }
+      },
+      fail(e) {
+        console.error(e)
+      }
+    })
+  },
+  isNormalDevice: function (deviceInfo) {
+    const normalPlatformList = ['ios', 'android', 'devtools'];
+    return normalPlatformList.includes(deviceInfo.platform)
+  },
+
   goInto: function(e) {
     var that = this;
     let name = e.currentTarget.dataset.text;
@@ -154,6 +186,16 @@ Page({
       case '8':
         wx.navigateTo({
           url: '../management/management?id=' + num + '&name=' + name,
+        });
+        break;
+      case '9':
+        wx.navigateTo({
+          url: '../center/center?id=' + num + '&name=' + name,
+        });
+        break;
+      case '10':
+        wx.navigateTo({
+          url: '../cleaning/cleaning?id=' + num + '&name=' + name,
         });
         break;
     }

@@ -6,15 +6,15 @@
       <view class="srcoll_view">{{noticeList}}</view>
     </view>
   </view>
-  <view class="box" wx:for="{{list}}" wx:key="{{index}}" bindtap="goInto" data-id="{{item.id}}" data-text="{{item.text}}">
-    <view class="wrap">
-      <image mode="widthFix" src="{{item.bg}}"></image>
+  
+  <view class="content">
+    <view class="box" wx:for="{{list}}" wx:key="index" bindtap="goInto" data-id="{{item.id}}" data-text="{{item.text}}" style="background:{{item.color}}">
+      <view class="wrap">
+        <image mode="widthFix" src="{{item.bg}}"></image>
+      </view>
+      <view class="text">{{item.text}}</view>
     </view>
   </view>
-</view>
-
-<view bindtap="goCenter" data-id="{{center.id}}" data-text="{{center.text}}" class="wrapTop">
-  {{center.text}}
 </view>
 
 <view wx:if="{{isShow}}" bindtap="goMonitoring" data-id="{{monitoring.id}}" data-text="{{monitoring.text}}" class="wrapBottom">

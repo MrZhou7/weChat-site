@@ -57,6 +57,8 @@ Page({
       column: 1
     }
     api.getNoticeList(data).then(res=> {
+      console.log(res)
+      res.data.data.length == 0 && wx.showToast({ title: '暂无信息', icon: 'none', duration: 1500 })
       this.setData({
         noticeList: res.data.data
       })

@@ -1,0 +1,73 @@
+/* pages/cleaning/cleaningDetail/cleaningDetail.wxss */
+.prompt{
+  background-color: #FFE63F;
+  line-height: 50rpx;
+  font-size: 24rpx;
+  padding: 5rpx 10rpx;
+}
+.img{
+  background-color: #fff;
+  margin-top: 10rpx;
+}
+.img image{
+  width: 100%;
+}
+.small{
+  color: red;
+}
+.weui-label {
+  width: 300rpx;
+}
+.content {
+  margin-top: 0;
+  font-size: 26rpx;
+  background-color: var(--weui-BG-2);
+  line-height: 1.41176471;
+  overflow: hidden;
+  position: relative;
+}
+.weui-btn-area{
+  padding-bottom: 30px;
+}
+.weui-cells__title{
+  color: #000;
+  font-size: 16px;
+}
+.weui-cell__bd{
+  width: 200px;
+  margin: auto;
+}
+.weui-input{
+  text-align: right;
+}
+.weui-cell{
+  z-index: 0;
+}
+.weui-cell__hd{
+  margin-right: 10rpx;
+}
+/* .box{
+  display: inline-block;
+  padding: 20rpx;
+  font-size: 26rpx;
+} */
+.box{
+  display: inline-block;
+  margin: 20rpx;
+  font-size: 26rpx;
+  border: 1px solid #eee;
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+}
+.active{
+  color: red;
+  border-color: red;
+}
+.confirmBtn{
+  font-size: 26rpx;
+  padding: 5rpx 10rpx;
+}
+.list{
+  display: flex;
+  padding-left: 16px;
+}

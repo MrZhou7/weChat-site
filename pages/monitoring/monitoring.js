@@ -2,7 +2,7 @@
 const App = getApp();
 import api from '../../utils/request.js'
 import common from '../../utils/common.js'
-
+import http from '../../utils/api.js'
 Page({
 
   /**
@@ -135,7 +135,7 @@ Page({
 
   // 获取门店信息
   getMall: function (data, _this) {
-    api.getMall(data).then(res => {
+    http.post('User/getMallListByType', data).then(res => {
       if (res.data.data.length > 0) {
         let mallData = common.getCompanyname(res.data.data)
         _this.setData({

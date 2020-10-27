@@ -1,0 +1,10 @@
+<!--pages/cleaning/cleaning.wxml-->
+<view class="content">
+  <view wx:for="{{list}}" style="background:{{item.color}}" wx:key="id" class='list' bindtap="goPage" data-num="{{item.num}}" data-id="{{item.id}}" data-text="{{item.text}}">
+    <view class="wrap">
+        <image mode="widthFix" src="{{item.bg}}"></image>
+      </view>
+    <view class="weui-badge" style="background-color: {{item.isShow ? '#52C41A' : '#DD001B'}}">{{item.status}}</view>
+    <view>{{item.text}}</view>
+  </view>
+</view>

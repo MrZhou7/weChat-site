@@ -3,22 +3,15 @@
   font-size: 24rpx;
   color: red;
 }
-.weui-uploader__input-box {
-  width: 300rpx;
-  height: 300rpx;
-}
-.weui-uploader__img{
-  border:1rpx dashed rgb(219, 211, 211);
-  width: 300rpx;
-  height: 300rpx;
-}
 .weui-btn-area{
   padding-bottom: 30px;
 }
 .btn{
-  padding: 0px 20rpx;
+  margin: 0px 20rpx;
   font-size: 14px;
+  flex: 1;
+  margin-top: 0 !important;
 }
-.button-sp-area{
-  flex: 1
+.weui-cells{
+  margin-top: 0px;
 }
