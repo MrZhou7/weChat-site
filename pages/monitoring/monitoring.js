@@ -49,7 +49,6 @@ Page({
       })
       if (dataList.bmsx == 0) {
         api.getArea({ session_key: wx.getStorageSync('session_key') }).then(req => {
-          console.log(req)
           let areaData = common.getCompanyname(req.data.data)
           that.setData({
             areaName: req.data.data[0].subcompanyname,
@@ -105,6 +104,13 @@ Page({
         id: this.data.areaList[e.detail.value].id
       }
       this.getMall(data, this)
+      this.setData({
+        user: [],
+        user_id: null,
+        userIndex: 0,
+        userList: [],
+        userName: ''
+      })
     }
   },
   // 选择门店
